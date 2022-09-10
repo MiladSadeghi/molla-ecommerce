@@ -10,7 +10,7 @@ import CheckOut from './CheckOut';
 
 const Navbar = () => {
   return (
-    <AppBar sx={{ background: "#333333", padding: ".3rem 0"}}>
+    <AppBar position='relative' component="nav" sx={{ background: "#333333", padding: ".3rem 0"}}>
       <Container>
         <Box display={"flex"} justifyContent={"space-between"}>
           <Call />

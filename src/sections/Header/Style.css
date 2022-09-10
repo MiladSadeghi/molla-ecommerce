@@ -1,0 +1,25 @@
+:root {
+  --swiper-navigation-size: 1.4rem;
+  --yellow: #fcb941;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000;
+  transition: color ease-in-out 0.2s;
+  padding: 0 20px;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+  padding: 20px;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  color: var(--yellow);
+}
+
+@media screen and (max-width: 1200px) {
+  .css-1p65lk3-MuiGrid-root {
+    height: 100%;
+  }
+}
