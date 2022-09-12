@@ -1,0 +1,55 @@
+$orange-gray: #fcb941;
+$orange: #bf913d;
+$black: #333;
+$light-black: #777;
+
+.bgImage {
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/shop-8b88e.appspot.com/o/23572870-68a7-415f-b6d2-41735df7914d.jpg?alt=media&token=e13eaa45-5724-4a84-ba48-ba4b51c2f2ac);
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0.625rem;
+}
+
+.leftBox {
+  h5 {
+    line-height: 1.55rem;
+    font-size: 1.25rem;
+    text-align: end;
+    color: $orange-gray;
+    font-weight: 600;
+    span {
+      color: $black;
+    }
+  }
+}
+
+.rod {
+  width: 5px;
+  height: 90px;
+  background: #f5f5f5;
+  margin: 0 25px;
+}
+
+.rightBox {
+  flex-grow: 0.2;
+  p {
+    line-height: 1.86rem;
+    font-size: 1rem;
+    color: $light-black;
+    span {
+      color: $black;
+    }
+  }
+}
+.btn {
+  border: none;
+  font-size: 0.9rem;
+  background-color: $orange-gray;
+  color: #fff;
+  padding: 11px 32px;
+  border-radius: 50px;
+  letter-spacing: -0.14px;
+}
