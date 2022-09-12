@@ -1,0 +1,73 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  width: 100%;
+  
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.mySwiper .swiper-button-disabled {
+  transition: opacity .3s ease-in-out;
+  opacity: 0 !important;
+}
+
+.mySwiper .swiper-button-prev, .mySwiper .swiper-button-next {
+  height: 450px;
+  top: 27px;
+  color: #fcb941;
+  padding: 0 16px;
+}
+
+.mySwiper .swiper-button-prev {
+  transition: .3s ease-in-out;
+  left: 0px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 14px 0px 17px -9px rgb(0 0 0 / 26%);
+}
+
+.mySwiper .swiper-button-prev:hover {
+  background: rgb(255, 255, 255);
+  box-shadow: 14px 0px 17px -9px rgb(0 0 0 / 26%);
+}
+
+.mySwiper .swiper-button-next {
+  right: 0;
+  transition: .3s ease-in-out;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: -14px 0px 17px -9px rgb(0 0 0 / 26%);
+}
+
+.mySwiper .swiper-button-next:hover {
+  background: rgb(255, 255, 255);
+  box-shadow: -14px 0px 17px -9px rgb(0 0 0 / 26%);
+}
+
+.mySwiper .swiper-pagination-bullet {
+  transition: .3s ease-in-out;
+  background: none;
+  border: 1px solid #fcb941;
+  opacity: 1;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  width: 20px;
+  border-radius: 10px;
+  background: #fcb941;
+}
