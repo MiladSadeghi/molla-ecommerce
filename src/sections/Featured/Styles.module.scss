@@ -13,42 +13,6 @@ $orange-gray: #fcb941;
   }
 }
 
-.title {
-  display: block;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
-  font-weight: 400;
-  max-height: 2.8em;
-  line-height: 1.4em;
-  font-size: 1rem;
-  text-align: initial;
-}
-
 .swip {
   padding: 1rem 0 3rem !important;
-
-  .card {
-    img {
-      width: 80%;
-    }
-    height: 450px;
-    border-radius: 0;
-    box-shadow: none;
-    border: 1px solid $border-color;
-  }
-}
-
-.cardContent {
-  text-align: initial;
-  padding: 2.5rem 1rem 0rem 1rem;
-  .category {
-    font-size: 0.9rem;
-    color: #ccc;
-    font-weight: 300;
-  }
-  .price {
-    font-size: 1rem;
-    color: $orange-gray;
-  }
 }

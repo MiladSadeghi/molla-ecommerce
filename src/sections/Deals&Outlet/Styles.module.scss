@@ -1,0 +1,133 @@
+.main {
+  background: #f4f7ff;
+  padding: 4.375rem 0;
+  .top {
+    text-align: center;
+    margin-bottom: 3.5rem;
+
+    h1 {
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 1rem;
+      color: #777;
+    }
+  }
+}
+
+.body {
+  .ghPic {
+    background: url(https://firebasestorage.googleapis.com/v0/b/shop-8b88e.appspot.com/o/6026e2e6-9e38-4c46-b194-a79cbc035108.jpg?alt=media&token=d83b1734-41b8-4cd2-9f4a-b30b44f04008);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #fff;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 420px;
+    padding: 2.25rem;
+  }
+}
+
+.body1 {
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 4px;
+    color: #ef837b;
+  }
+  h4 {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 17.5px;
+    color: #777;
+  }
+}
+
+.body2 {
+  .title {
+    font-size: 1rem;
+    color: #333;
+    max-width: 240px;
+    line-height: 20px;
+    margin-bottom: 0.7rem;
+    font-weight: 400;
+  }
+  p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #ef837b;
+    margin-bottom: 8px;
+    span {
+      color: #cccccc;
+    }
+  }
+  button {
+    color: #fcb941;
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    transition: border-bottom 0.3s ease-in-out;
+    border-bottom: 1px solid transparent;
+    line-height: 20px;
+    &:hover {
+      border-color: #fcb941;
+    }
+  }
+}
+
+.body3 {
+  display: flex;
+  flex-direction: column;
+  max-width: 180px;
+
+  .clock {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    .forAfter {
+      position: relative;
+      &::after {
+        color: #333333;
+        content: ":";
+        display: inline-block;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1;
+        position: absolute;
+        margin-left: 6px;
+        margin-top: -1px;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -15px;
+      }
+    }
+  }
+
+  .clockItem {
+    text-align: center;
+
+    span {
+      margin-bottom: 0.4rem;
+      border-radius: 3px;
+      font-size: 1.5rem;
+      color: #fff;
+      background: #fcb941;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    p {
+      font-size: 0.625rem;
+    }
+  }
+}

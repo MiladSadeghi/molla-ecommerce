@@ -4,10 +4,10 @@ import styles from "./Styles.module.scss";
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { DataContext } from '../../App';
+import ProductCard from '../../components/ProductCard';
 import "swiper/css";
 import "swiper/css/pagination";
 import "./Style.css"
-import ProductCard from './ProductCard';
 
 const Featured = () => {
   const context = useContext(DataContext);

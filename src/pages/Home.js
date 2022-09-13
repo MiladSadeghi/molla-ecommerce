@@ -1,6 +1,7 @@
 import FreeShipping from "../sections/FreeShipping/FreeShipping";
 import Featured from "../sections/Featured/Featured";
 import Header from "../sections/Header/Header";
+import DealsOutlet from "../sections/Deals&Outlet/Deals&Outlet";
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <Header />
       <Featured />
       <FreeShipping />
+      <DealsOutlet />
     </>
   );
 }
