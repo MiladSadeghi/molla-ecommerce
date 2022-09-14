@@ -9,18 +9,26 @@ const Navbar = lazy(() => import('./sections/Navbar/Navbar'));
 export const DataContext = createContext();
 
 function App() {
-  const [database, setDatabase] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [logos, setLogos] = useState([]);
 
   useEffect(() => {
     const products = ref(db, '/products');
+    const logos = ref(db, 'logos/');
+  
     onValue(products, (snapshot) => {
       const data = snapshot.val();
-      setDatabase(data)
+      setProduct(data)
+    });
+
+    onValue(logos, (snapshot) => {
+      const data = snapshot.val();
+      setLogos(data)
     });
   }, [])
 
   return (
-    <DataContext.Provider value={[database, setDatabase]}>
+    <DataContext.Provider value={[product, setProduct, logos, setLogos]}>
       <CssBaseline />
       <Suspense fallback={<Loading />}>
         <Navbar />
