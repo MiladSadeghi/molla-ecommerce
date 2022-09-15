@@ -43,7 +43,7 @@ const Companies = () => {
           })
         }
       </Swiper>
-      <hr />
+      <hr style={{borderColor: "#ebebeb"}} />
     </Container>
   );
 }

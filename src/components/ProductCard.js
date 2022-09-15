@@ -9,7 +9,7 @@ function randomNumber() {
 
 const ProductCard = (props) => {
   return (
-    <Card style={{boxShadow: "none"}} sx={{ height: "100%" }} className={`${styles.card} card`}>
+    <Card style={{...props.sty ,boxShadow: "none"}} sx={{ height: "100%" }} className={`${styles.card} card`}>
       <Box component="div" sx={{display: "flex", alignItems: "center", justifyContent: "center", width: 250, height: 250, mx: "auto"}}>
         <CardMedia
           component="img"

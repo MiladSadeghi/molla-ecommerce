@@ -3,7 +3,10 @@ $orange-gray: #fcb941;
 
 .card {
   img {
-    width: 80%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2rem;
   }
   height: 450px;
   border-radius: 0;
@@ -36,7 +39,7 @@ $orange-gray: #fcb941;
     color: $orange-gray;
     display: flex;
 
-    p {
+    span {
       color: #ccc;
       margin-left: 8px;
       font-size: 1rem;
