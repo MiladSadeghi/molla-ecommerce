@@ -1,0 +1,35 @@
+.top {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.75rem;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .body {
+    display: flex;
+  }
+}
+
+.tabs {
+  align-items: center;
+  justify-content: center;
+  button {
+    font-family: "Poppins";
+    padding: 4.5px 7px;
+    min-width: auto;
+    max-width: unset;
+    font-size: 0.875rem;
+    min-height: auto;
+    font-weight: 300;
+    color: #777;
+
+    &:not(:nth-child(1)) {
+      margin-left: 0.4rem;
+    }
+  }
+}

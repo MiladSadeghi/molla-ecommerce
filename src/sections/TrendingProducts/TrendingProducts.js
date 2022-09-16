@@ -21,7 +21,6 @@ const TrendingProducts = () => {
     "Accessories": [],
   })
   const [context,] = useContext(DataContext);
-  const [] = useContext(DataContext);
 
   useEffect(() => {
     if(Object.keys(context).length !== 0) {
@@ -46,10 +45,6 @@ const TrendingProducts = () => {
       }))
     }
   }, [context])
-
-  useEffect(() => {
-    
-  }, [value])
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
