@@ -5,6 +5,7 @@ import DealsOutlet from "../sections/Deals&Outlet/Deals&Outlet";
 import Companies from "../sections/Companies/Companies";
 import TrendingProducts from "../sections/TrendingProducts/TrendingProducts";
 import TopSellingProducts from "../sections/TopSellingProducts/TopSellingProducts";
+import Trait from "../sections/Trait/Trait";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       <Companies />
       <TrendingProducts />
       <TopSellingProducts />
+      <Trait />
     </>
   );
 }

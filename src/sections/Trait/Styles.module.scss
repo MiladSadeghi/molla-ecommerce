@@ -1,0 +1,165 @@
+.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 28px 0;
+
+  .icon {
+    display: flex;
+    align-items: center;
+
+    .box {
+      h3 {
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 3px;
+      }
+      p {
+        font-size: 1rem;
+        color: #777;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+.bgBG {
+  background: url(https://firebasestorage.googleapis.com/v0/b/shop-8b88e.appspot.com/o/1f3d652b-9bfc-4352-8538-68fafeca1d5c.jpg?alt=media&token=723429ac-f435-44d6-8676-10dbfd7b6a9c);
+  padding: 1rem;
+}
+
+.girdContent {
+  background: #fff;
+  display: flex;
+
+  .grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 400;
+    }
+    p {
+      font-size: 1rem;
+      color: #999;
+      margin-bottom: 1.2rem;
+    }
+
+    h4 {
+      font-size: 30px;
+      font-weight: 400;
+
+      p {
+        color: #777;
+        font-weight: 300;
+
+        span {
+          color: #fcb941;
+        }
+      }
+    }
+
+    .socialIcons {
+      display: flex;
+      div {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        font-size: 1.125rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid transparent;
+        transition: all ease-in-out 0.3s;
+        margin-left: 1rem;
+        &:hover {
+          border-color: #e1e2e6;
+        }
+
+        &:nth-child(1) {
+          background: #8f79ed;
+          color: #fff;
+          &:hover {
+            background: #fff;
+            color: #8f79ed;
+          }
+        }
+        &:nth-child(2) {
+          background: #79c8ed;
+          color: #fff;
+          &:hover {
+            background: #fff;
+            color: #79c8ed;
+          }
+        }
+        &:nth-child(3) {
+          background: #dd6d9a;
+          color: #fff;
+          &:hover {
+            background: #fff;
+            color: #dd6d9a;
+          }
+        }
+        &:nth-child(4) {
+          background: #e66262;
+          color: #fff;
+          &:hover {
+            background: #fff;
+            color: #e66262;
+          }
+        }
+        &:nth-child(5) {
+          background: #e66262;
+          color: #fff;
+          &:hover {
+            background: #fff;
+            color: #e66262;
+          }
+        }
+      }
+    }
+  }
+
+  .inputEmail {
+    display: flex;
+    width: 70%;
+    height: 100%;
+
+    input {
+      width: 100%;
+      border: 1px solid #dadada;
+      border-right: none;
+      border-radius: 30px 0 0 30px;
+      padding: 1.15rem;
+      height: 46px;
+      outline: none;
+      font-size: 1rem;
+      &:focus {
+        border-color: #fcb941;
+      }
+      &:focus-visible {
+        border-color: #fcb941;
+        border-right: none;
+      }
+    }
+    button {
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.2rem 0.5rem 1.5rem;
+      border-radius: 0 30px 30px 0;
+      border: none;
+      background: #fcb941;
+      color: #fff;
+      svg {
+        font-size: 1.7rem;
+      }
+    }
+  }
+}
