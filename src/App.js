@@ -4,6 +4,8 @@ import Loading from "./components/Loading";
 import { useState, createContext, useEffect } from 'react';
 import { db } from './components/Firebase';
 import { onValue, ref } from 'firebase/database';
+import Footer from "./sections/Footer/Footer";
+
 const Home = lazy(() => import('./pages/Home'));
 const Navbar = lazy(() => import('./sections/Navbar/Navbar'));
 export const DataContext = createContext();
@@ -33,6 +35,7 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Navbar />
         <Home />
+        <Footer />
       </Suspense>
     </DataContext.Provider>
   );

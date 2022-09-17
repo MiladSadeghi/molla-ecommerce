@@ -7,6 +7,7 @@ import TrendingProducts from "../sections/TrendingProducts/TrendingProducts";
 import TopSellingProducts from "../sections/TopSellingProducts/TopSellingProducts";
 import Trait from "../sections/Trait/Trait";
 
+
 function Home() {
   return (
     <>
