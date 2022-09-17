@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 import styles from "./Styles.module.scss";
 
 const List = ({title, content}) => {
@@ -6,7 +7,7 @@ const List = ({title, content}) => {
     <div className={styles.list}>
       <h5>{title}</h5>
       <ul>
-        {content.map(item => <li>{item}</li>)}
+        {content.map(item => <li key={v4()}>{item}</li>)}
       </ul>
     </div>
   );

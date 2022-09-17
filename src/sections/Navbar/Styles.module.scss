@@ -26,5 +26,87 @@
   background-color: #fff;
   box-shadow: 0px 11px 15px -7px RGB(0 0 0 / 20%),
     0px 24px 38px 3px RGB(0 0 0 / 14%), 0px 9px 46px 8px RGB(0 0 0 / 12%);
-  padding: 4rem;
+  padding: 2rem 4rem;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 11px;
+  }
+
+  input {
+    border: 1px solid #ebebeb;
+    outline: none;
+    background-color: #fafafa;
+    transition: all 0.3s ease-in-out;
+    padding: 9px 20px 9px 20px;
+    font-size: 14px;
+
+    &:focus {
+      background: #fff;
+      border-color: #fcb941;
+    }
+  }
+}
+
+.login {
+  display: flex;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #fcb941;
+    border: 1px solid #fcb941;
+    min-width: 115px;
+    padding: 8.5px 15px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: #fcb941;
+      color: #fff;
+    }
+
+    svg {
+      font-size: 1.7rem;
+    }
+  }
+
+  .checkBox {
+    margin-left: 1rem;
+    font-size: 14px;
+    color: #666666;
+  }
+}
+
+.bottom {
+  p {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    color: #777777;
+    margin-bottom: 1rem;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #f5f6f9;
+    border: 1px solid #ebebeb;
+    font-size: 1rem;
+    padding: 8.6px 10px;
+
+    svg {
+      font-size: 1.4rem;
+      margin-right: 0.7rem;
+    }
+  }
 }

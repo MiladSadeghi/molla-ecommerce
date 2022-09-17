@@ -18,8 +18,8 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ py: 3 }}>
+          <Typography component={'div'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -73,8 +73,7 @@ const SignInSignUp = () => {
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
-        }}
-      >
+        }} >
         <Fade in={open}>
           <Box className={styles["modal-signin-signup"]}>
             <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
