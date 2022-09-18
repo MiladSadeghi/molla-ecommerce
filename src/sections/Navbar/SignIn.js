@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { VscArrowSmallRight } from 'react-icons/vsc';
 import { FcGoogle } from "react-icons/fc"
 import styles from './Styles.module.scss';
+import { signInWithGoogle } from '../../components/Firebase';
 
 const SignIn = () => {
   const [inputValue, setInputValue] = useState({
@@ -32,8 +33,8 @@ const SignIn = () => {
       </div>
       <hr style={{margin: "2rem 0"}} />
       <div className={styles.bottom}>
-        <p >or sign in with</p>
-        <button><FcGoogle /> Login With Google</button>
+        <p>or sign in with</p>
+        <button onClick={signInWithGoogle}><FcGoogle /> Login With Google</button>
       </div>
     </Box>
   );

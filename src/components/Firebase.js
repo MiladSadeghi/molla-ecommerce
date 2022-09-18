@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHeejRBZa7afv2hlf8250q7iz874UFFro",
@@ -13,4 +14,23 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+
+const db = getDatabase(app);
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
+
+const signInWithGoogle = (event) => {
+  event.preventDefault();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      set(ref(db, `users/${result.user.uid}`), {
+        uid: result.user.uid,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export { db, auth, signInWithGoogle }

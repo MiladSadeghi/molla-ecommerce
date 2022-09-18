@@ -8,10 +8,6 @@ import "./Style.css"
 
 const Companies = () => {
   const data = useContext(DataContext);
-  console.log(data)
-  useEffect(() => {
-    console.log(data);
-  }, [data])
   return (
     <Container>
       <Swiper className="mySwiper"

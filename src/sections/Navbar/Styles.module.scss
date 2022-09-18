@@ -1,10 +1,17 @@
-.topHover {
+.topHover,
+.username {
   transition: all 0.2s ease-in-out;
   display: flex;
   color: #777 !important;
   &:hover {
     color: #fcb941 !important;
   }
+}
+
+.username {
+  font-weight: 300;
+  font-size: 0.9rem;
+  cursor: default;
 }
 
 .signSelect {
