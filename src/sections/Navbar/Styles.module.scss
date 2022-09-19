@@ -3,6 +3,7 @@
   transition: all 0.2s ease-in-out;
   display: flex;
   color: #777 !important;
+  padding: 0;
   &:hover {
     color: #fcb941 !important;
   }
@@ -40,6 +41,17 @@
   display: flex;
   flex-direction: column;
 
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      color: red;
+      font-size: 0.7rem;
+    }
+  }
+
   label {
     font-size: 14px;
     font-weight: 300;
@@ -63,6 +75,13 @@
 
 .login {
   display: flex;
+
+  .none {
+    &:hover {
+      background: #fff !important;
+    }
+  }
+
   button {
     display: flex;
     align-items: center;

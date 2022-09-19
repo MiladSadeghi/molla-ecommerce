@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getDatabase, ref, set, update } from "firebase/database";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
+import { errorHandleSignUp } from "../sections/Navbar/Handle";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHeejRBZa7afv2hlf8250q7iz874UFFro",
@@ -32,5 +33,23 @@ const signInWithGoogle = (event) => {
       console.log(error);
     });
 };
+
+
+export const registerWithUserAndPassword = async (inputs, setSnackbar, setUserDetails) => {
+  await createUserWithEmailAndPassword(auth, inputs.email, inputs.password);
+  await updateProfile(auth.currentUser, {
+  displayName: inputs.userName
+  })
+  await update(ref(db, `users/${auth.currentUser.uid}`), {
+    uid: auth.currentUser.uid,
+  });
+  setSnackbar({
+    ...errorHandleSignUp("regd"),
+    open: true,
+  })
+  // setTimeout(() => {
+  //   window.location.reload(false);
+  // }, 2000);
+}
 
 export { db, auth, signInWithGoogle }
