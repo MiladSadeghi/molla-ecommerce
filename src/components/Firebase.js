@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, update } from "firebase/database";
+import { getDatabase, ref, update } from "firebase/database";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { handleFirebaseError } from "../sections/Navbar/Handle";
 
@@ -15,25 +15,26 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getDatabase(app);
 const auth = getAuth(app);
-
 const provider = new GoogleAuthProvider();
 
-const signInWithGoogle = (event) => {
-  event.preventDefault();
+const signInWithGoogle = (setSnackbar) => {
   signInWithPopup(auth, provider)
-    .then((result) => {
-      set(ref(db, `users/${result.user.uid}`), {
+    .then(async (result) => {
+      await update(ref(db, `users/${auth.currentUser.uid}`), {
         uid: result.user.uid,
+        displayName: result.user.displayName
       });
+      setSnackbar({
+        ...handleFirebaseError("golg"),
+        open: true,
+      })
     })
     .catch((error) => {
       console.log(error);
     });
 };
-
 
 export const registerWithUserAndPassword = async (inputs, setSnackbar) => {
   await createUserWithEmailAndPassword(auth, inputs.email, inputs.password);

@@ -6,10 +6,8 @@ import styles from "./Styles.module.scss";
 import logo from "../../images/molla-logo.png"
 import WishList from './WishList';
 import CheckOut from './CheckOut';
-import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../components/Firebase';
 import MuiAlert from '@mui/material/Alert';
-import { useRef } from 'react';
 
 export const Context = createContext();
 
@@ -27,7 +25,7 @@ const Navbar = () => {
     open: false,
     severity: ""
   })
-  const [useAuth, setUserAuth] = useState(auth);
+  const [useAuth] = useState(auth);
 
   useEffect(() => {
     if (useAuth.currentUser) {
@@ -36,7 +34,7 @@ const Navbar = () => {
         userName: useAuth.currentUser.displayName
       })
     }
-  }, [useAuth.currentUser]);
+  }, [useAuth.currentUser, useAuth]);
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {

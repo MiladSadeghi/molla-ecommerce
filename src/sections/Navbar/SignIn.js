@@ -86,7 +86,7 @@ const SignIn = () => {
       <hr style={{margin: "2rem 0"}} />
       <div className={styles.bottom}>
         <p>or sign in with</p>
-        <button onClick={signInWithGoogle}><FcGoogle /> Login With Google</button>
+        <button onClick={() => signInWithGoogle(setSnackbar)}><FcGoogle /> Login With Google</button>
       </div>
     </Box>
   );

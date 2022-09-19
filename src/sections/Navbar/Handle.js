@@ -71,6 +71,7 @@ export const handleFirebaseError = (error) => {
     case "regd":
       return {message: "thanks for register.", severity: "success"}
     case "lgsc":
+    case "golg":
       return {message: "welcome back...", severity: "success"}
     case "auth/user-not-found":
       return {message: "user not found!", severity: "error"}
