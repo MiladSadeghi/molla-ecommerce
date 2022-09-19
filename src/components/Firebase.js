@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, update } from "firebase/database";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
-import { errorHandleSignUp } from "../sections/Navbar/Handle";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { handleFirebaseError } from "../sections/Navbar/Handle";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHeejRBZa7afv2hlf8250q7iz874UFFro",
@@ -35,21 +35,27 @@ const signInWithGoogle = (event) => {
 };
 
 
-export const registerWithUserAndPassword = async (inputs, setSnackbar, setUserDetails) => {
+export const registerWithUserAndPassword = async (inputs, setSnackbar) => {
   await createUserWithEmailAndPassword(auth, inputs.email, inputs.password);
   await updateProfile(auth.currentUser, {
-  displayName: inputs.userName
+    displayName: inputs.userName
   })
   await update(ref(db, `users/${auth.currentUser.uid}`), {
     uid: auth.currentUser.uid,
+    displayName: inputs.userName
   });
   setSnackbar({
-    ...errorHandleSignUp("regd"),
+    ...handleFirebaseError("regd"),
     open: true,
   })
-  // setTimeout(() => {
-  //   window.location.reload(false);
-  // }, 2000);
 }
 
-export { db, auth, signInWithGoogle }
+const LoginWithEmailAndPassword = async (inputs, setSnackbar) => {
+  await signInWithEmailAndPassword(auth, inputs.email, inputs.password)
+  setSnackbar({
+    ...handleFirebaseError("lgsc"),
+    open: true,
+  })
+}
+
+export { db, auth, signInWithGoogle, LoginWithEmailAndPassword }

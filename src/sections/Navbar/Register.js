@@ -1,16 +1,14 @@
 import { Box, Checkbox, FormControlLabel  } from '@mui/material';
 import React, { useEffect, useState, useContext } from 'react';
 import { VscArrowSmallRight } from 'react-icons/vsc';
-import { errorHandleSignUp, validateSignUp } from './Handle';
+import { handleFirebaseError, validateSignUp } from './Handle';
 import { Bars } from  'react-loader-spinner'
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, registerWithUserAndPassword } from '../../components/Firebase';
+import { registerWithUserAndPassword } from '../../components/Firebase';
 import { Context } from './Navbar';
 import styles from './Styles.module.scss';
-import { ref, set } from 'firebase/database';
 
 const Register = () => {
-  const {snackbar, setSnackbar, setUserDetails} = useContext(Context);
+  const {setSnackbar, setUserDetails} = useContext(Context);
   const [inputValue, setInputValue] = useState({
     email: "",
     userName: "",
@@ -64,7 +62,7 @@ const Register = () => {
           status: false
         })
         setSnackbar({
-          ...errorHandleSignUp(error.code),
+          ...handleFirebaseError(error.code),
           open: true,
         })
       }
@@ -77,7 +75,6 @@ const Register = () => {
         isAccepted: true
       })
     }
-
   };
 
   return (
@@ -85,10 +82,10 @@ const Register = () => {
       <Box>
         <div className={styles.inputs} style={{marginBottom: "13px"}}>
           <div>
-            <label htmlFor="email">Username or email address *</label>
+            <label htmlFor="email">Email Address *</label>
             {errors.email && touched.email && <p>{errors.email}</p>}
           </div>
-          <input defaultValue={inputValue["email"]} onChange={handleChange} onFocus={focusHandler} type="text" id="email"/>
+          <input defaultValue={inputValue["email"]} onChange={handleChange} onFocus={focusHandler} type="email" id="email"/>
         </div>
         <div className={styles.inputs} style={{marginBottom: "13px"}}>
           <div>

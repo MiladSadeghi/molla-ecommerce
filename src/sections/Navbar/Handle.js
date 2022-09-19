@@ -42,7 +42,27 @@ export const validateSignUp = (data) => {
   return errors;
 }
 
-export const errorHandleSignUp = (error) => {
+export const validateSignIn = (data) => {
+  const errors = {};
+
+  if (!data.email) {
+    errors.email = "Email Required";
+  } else if (!/\S+@\S+\.\S+/.test(data.email)) {
+    errors.email = "Email Address Is Invalid";
+  } else {
+    delete errors.email;
+  }
+
+  if (!data.password) {
+    errors.password = "Password Required.";
+  } else {
+    delete errors.password;
+  }
+
+  return errors;
+}
+
+export const handleFirebaseError = (error) => {
   switch(error) {
     case "auth/email-already-in-use":
       return {message: "e-mail is already linked to an account or is invalid", severity: "error"}
@@ -50,6 +70,14 @@ export const errorHandleSignUp = (error) => {
       return {message: "check Your Connection!.", severity: "error"}
     case "regd":
       return {message: "thanks for register.", severity: "success"}
+    case "lgsc":
+      return {message: "welcome back...", severity: "success"}
+    case "auth/user-not-found":
+      return {message: "user not found!", severity: "error"}
+    case "auth/wrong-password":
+      return {message: "your password is wrong", severity: "error"}
+    case "auth/too-many-requests":
+      return {message: "to many request, try later.", severity: "error"}
     default:
       break;
   }
