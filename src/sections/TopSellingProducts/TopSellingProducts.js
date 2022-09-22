@@ -6,6 +6,7 @@ import { v4 } from 'uuid';
 import { DataContext } from '../../App'; 
 import ProductCard from '../../components/ProductCard';
 import styles from "./Styles.module.scss";
+import "./Style.css";
 
 const TopSellingProducts = () => {
   const [value, setValue] = useState(0);
@@ -48,7 +49,7 @@ const TopSellingProducts = () => {
   }, [context])
 
   return (
-    <Container>
+    <Container className={"top-selling"}>
       <div style={{marginBottom: "3.75rem"}}>
         <div className={styles.top}>
           <h1>Top Selling Products</h1>

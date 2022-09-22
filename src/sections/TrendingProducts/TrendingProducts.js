@@ -51,7 +51,7 @@ const TrendingProducts = () => {
   };
 
   return (
-    <Container>
+    <Container className={"trending-products"}>
       <div className={styles.top}>
         <h1>Trending Products</h1>
         <div className={styles.body}>

@@ -23,12 +23,15 @@
   align-items: center;
 }
 
+.trending-products .mySwiper .swiper-button-prev, .trending-products .mySwiper .swiper-button-next {
+  height: 100%;
+  top: 11px;
+  right: 0;
+  color: #fcb941;
+  padding: 0 16px;
+}
+
 .mySwiper .swiper-button-disabled {
   transition: opacity .3s ease-in-out;
   opacity: 0 !important;
-}
-
-.mySwiper .swiper-button-prev, .mySwiper .swiper-button-next {
-  height: 100%;
-  top: 10px;
 }

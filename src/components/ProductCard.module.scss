@@ -3,12 +3,13 @@ $orange-gray: #fcb941;
 
 .card {
   img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
     padding: 2rem;
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
   }
-  height: 450px;
+  height: 409.39px;
   border-radius: 0;
   box-shadow: none;
   border: 1px solid $border-color;
@@ -28,7 +29,10 @@ $orange-gray: #fcb941;
 
 .cardContent {
   text-align: initial;
-  padding: 2.5rem 1rem 0rem 1rem;
+  padding: 1rem 1rem 0rem 1rem;
+  position: relative;
+  z-index: 7;
+  background: #fff;
   .category {
     font-size: 0.9rem;
     color: #ccc;
@@ -45,5 +49,124 @@ $orange-gray: #fcb941;
       font-size: 1rem;
       margin-bottom: 1rem;
     }
+  }
+}
+
+.imageDiv {
+  &:hover {
+    .addToWishList {
+      opacity: 1;
+      right: 7px;
+      visibility: visible;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        border-radius: 0px 25px 25px 0px;
+        .top {
+          opacity: 1;
+          transform: translateX(-63px);
+        }
+      }
+    }
+
+    .bottom {
+      bottom: 0;
+    }
+  }
+}
+
+.addToWishList {
+  position: absolute;
+  opacity: 0;
+  top: 23px;
+  right: 30px;
+  content: "";
+  visibility: hidden;
+  transition: 0.3s all ease-in-out;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $orange-gray;
+  border-radius: 50%;
+
+  svg {
+    font-weight: 300;
+    font-size: 14px;
+    z-index: 11;
+    color: #333;
+  }
+
+  .top {
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    border-radius: 25px;
+    height: 30px;
+    opacity: 0;
+    transform: translateX(-61px);
+    background: $orange-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 19px;
+    p {
+      color: #333;
+      white-space: nowrap;
+      font-size: 11px;
+      width: 100%;
+      font-weight: 300;
+    }
+  }
+}
+
+.bottom {
+  position: absolute;
+  bottom: -39px;
+  left: 0;
+  width: 100%;
+  background: #333333;
+  padding: 10px 0;
+  transition: all 0.3s ease-in-out;
+
+  .content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    div:not(:nth-child(2)) {
+      transition: all ease-in-out 0.3s;
+      display: flex;
+      width: 100%;
+      font-size: 15px;
+      align-items: center;
+      color: #fff;
+      justify-content: center;
+      svg {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      h5 {
+        font-weight: 400;
+        white-space: nowrap;
+        transition: box-shadow ease-in-out 0.3s;
+      }
+
+      &:hover {
+        color: #fcb941;
+        h5 {
+          box-shadow: 0 1px 0 0 #c96;
+        }
+      }
+    }
+  }
+
+  .rode {
+    width: 3px;
+    min-height: 100%;
+    max-height: 100%;
+    background: #6e6e6e;
+    display: inline-block;
+    height: 18px;
   }
 }

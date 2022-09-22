@@ -12,7 +12,7 @@ import "./Style.css"
 const Featured = () => {
   const context = useContext(DataContext);
   return (
-    <Container className={styles.featured}>
+    <Container className={`${styles.featured} featured`}>
       <Typography variant="h1" component="span" className={styles.span}>
         Featured
       </Typography>
