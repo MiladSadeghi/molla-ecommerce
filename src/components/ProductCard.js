@@ -1,16 +1,24 @@
-import { Card, CardContent, CardMedia, Rating } from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
+import { Card, CardContent, CardMedia, Rating, Box } from '@mui/material';
+import React, { useContext } from 'react';
 import { FiHeart } from "react-icons/fi"
 import { MdAddShoppingCart } from "react-icons/md";
 import { GiBinoculars } from "react-icons/gi";
+import { DataContext } from '../App';
 import styles from "./ProductCard.module.scss";
+import { AddToWishList } from './Firebase';
 
 function randomNumber() {
   return Math.floor(Math.random() * (5 - 1 + 1) + 1)
 }
 
 const ProductCard = (props) => {
+  const data = useContext(DataContext);
+  const addToCart = async (event) => {
+    if (!data[4].includes(event.currentTarget.getAttribute("productid"))) {
+      data[5](prevState => [...prevState, event.currentTarget.getAttribute("productid")] , AddToWishList(data[4]));
+    }
+  }
+
   return (
     <Card style={{...props.sty ,boxShadow: "none"}} sx={{ height: "100%" }} className={`${styles.card} card`}>
       <Box component="div" sx={{display: "flex", alignItems: "center", justifyContent: "center", position: "relative"}} className={styles.imageDiv}>
@@ -28,7 +36,7 @@ const ProductCard = (props) => {
         </div>
         <div className={styles.bottom}>
           <div className={styles.content}>
-            <div>
+            <div productid={props.data.id} onClick={addToCart}>
               <MdAddShoppingCart />
               <h5>add to cart</h5>
             </div>

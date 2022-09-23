@@ -2,9 +2,10 @@ import { CssBaseline } from '@mui/material';
 import { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
 import { useState, createContext, useEffect } from 'react';
-import { db } from './components/Firebase';
+import { AddToWishList, db } from './components/Firebase';
 import { onValue, ref } from 'firebase/database';
 import Footer from "./sections/Footer/Footer";
+import { auth } from './components/Firebase';
 
 const Home = lazy(() => import('./pages/Home'));
 const Navbar = lazy(() => import('./sections/Navbar/Navbar'));
@@ -13,6 +14,7 @@ export const DataContext = createContext();
 function App() {
   const [product, setProduct] = useState([]);
   const [logos, setLogos] = useState([]);
+  const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
     const products = ref(db, '/products');
@@ -29,8 +31,14 @@ function App() {
     });
   }, [])
 
+  useEffect(() => {
+    if (auth.currentUser) {
+      AddToWishList(wishList);
+    }
+  }, [wishList])
+
   return (
-    <DataContext.Provider value={[product, setProduct, logos, setLogos]}>
+    <DataContext.Provider value={[product, setProduct, logos, setLogos, wishList, setWishList]}>
       <CssBaseline />
       <Suspense fallback={<Loading />}>
         <Navbar />

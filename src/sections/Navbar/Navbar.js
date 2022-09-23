@@ -1,21 +1,23 @@
 import { AppBar, Container, Snackbar, Box, Fade } from '@mui/material';
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 import Call from './Call';
 import SignInSignUp from './SignInSignUp';
 import styles from "./Styles.module.scss";
 import logo from "../../images/molla-logo.png"
 import WishList from './WishList';
 import CheckOut from './CheckOut';
-import { auth } from '../../components/Firebase';
+import { AnonymouslySignIn, auth, GetUserWishList } from '../../components/Firebase';
 import MuiAlert from '@mui/material/Alert';
+import { onAuthStateChanged } from 'firebase/auth';
+import { DataContext } from '../../App';
 
 export const Context = createContext();
-
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 const Navbar = () => {
+  const data = useContext(DataContext);
   const [userDetails, setUserDetails] = useState({
     logged: false,
     userName: ""
@@ -36,6 +38,17 @@ const Navbar = () => {
     }
   }, [useAuth.currentUser, useAuth]);
 
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        console.log(user);
+        data[5](await GetUserWishList());
+      } else {
+        AnonymouslySignIn();
+      }
+    })
+  }, [])
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -43,13 +56,14 @@ const Navbar = () => {
 
     setSnackbar({...snackbar, open: !snackbar.open});
   };
+
   return (
     <AppBar position='relative' component="nav" sx={{ background: "#333333"}}>
       <Container>
         <Box display={"flex"} justifyContent={"space-between"} py={"8.5px"}>
           <Call />
           {
-            userDetails.logged ? 
+            (userDetails.logged && userDetails.userName !== null) ?
             <h5 className={styles.username}>{userDetails.userName}</h5> : 
             <Context.Provider value={{snackbar, setSnackbar}}>
               <SignInSignUp />

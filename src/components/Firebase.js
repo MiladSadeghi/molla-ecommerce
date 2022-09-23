@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, update } from "firebase/database";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { child, get, getDatabase, onValue, ref, set, update } from "firebase/database";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile, signInAnonymously } from "firebase/auth";
 import { handleFirebaseError } from "../sections/Navbar/Handle";
 
 const firebaseConfig = {
@@ -59,4 +59,25 @@ const LoginWithEmailAndPassword = async (inputs, setSnackbar) => {
   })
 }
 
-export { db, auth, signInWithGoogle, LoginWithEmailAndPassword }
+const AnonymouslySignIn = async () => {
+  await signInAnonymously(auth)
+  await update(ref(db, `users/${auth.currentUser.uid}`), {
+    uid: auth.currentUser.uid,
+  });
+
+};
+
+const GetUserWishList = async () => {
+  const dbRef = ref(db);
+  const data = await get(child(dbRef, `users/${auth.currentUser.uid}/wishlist`));
+  return (data.exists() ? data.val() : [])
+}
+
+const AddToWishList = async (wishListArray) => {
+  console.log(wishListArray)
+  await update(ref(db, `users/${auth.currentUser.uid}`), {
+    "wishlist": wishListArray
+  })
+}
+
+export { db, auth, signInWithGoogle, LoginWithEmailAndPassword, AnonymouslySignIn, GetUserWishList, AddToWishList }
