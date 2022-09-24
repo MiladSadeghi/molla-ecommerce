@@ -3,8 +3,8 @@ import { Grid } from '@mui/material';
 import { Container } from '@mui/system';
 import React, { memo, useContext } from 'react';
 import styles from "./Styles.module.scss";
-import { DataContext } from '../../App';
-import ProductCard from '../../components/ProductCard';
+import { DataContext } from "App";
+import ProductCard from 'components/ProductCard/ProductCard';
 import Counter from './Counter';
 const DealsOutlet = () => {
   const context = useContext(DataContext);

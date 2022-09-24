@@ -3,8 +3,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { v4 } from 'uuid';
-import { DataContext } from '../../App'; 
-import ProductCard from '../../components/ProductCard';
+import { DataContext } from 'App'; 
+import ProductCard from 'components/ProductCard/ProductCard';
 import styles from "./Styles.module.scss";
 import "./Style.css";
 

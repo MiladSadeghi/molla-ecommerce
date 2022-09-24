@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { VscArrowSmallRight } from 'react-icons/vsc';
 import { FcGoogle } from "react-icons/fc"
 import styles from './Styles.module.scss';
-import { LoginWithEmailAndPassword, signInWithGoogle } from '../../components/Firebase';
+import { LoginWithEmailAndPassword, signInWithGoogle } from '../Firebase';
 import { Bars } from 'react-loader-spinner';
 import { Context } from './Navbar';
-import { handleFirebaseError, validateSignIn } from './Handle';
+import { handleFirebaseError, validateSignIn } from '../Handle';
 
 const SignIn = () => {
   const {setSnackbar, setUserDetails} = useContext(Context);

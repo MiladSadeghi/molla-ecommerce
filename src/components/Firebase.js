@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { child, get, getDatabase, onValue, ref, set, update } from "firebase/database";
+import { child, get, getDatabase, ref, update } from "firebase/database";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile, signInAnonymously } from "firebase/auth";
-import { handleFirebaseError } from "../sections/Navbar/Handle";
+import { handleFirebaseError } from "./Handle";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHeejRBZa7afv2hlf8250q7iz874UFFro",
@@ -74,7 +74,6 @@ const GetUserWishList = async () => {
 }
 
 const AddToWishList = async (wishListArray) => {
-  console.log(wishListArray)
   await update(ref(db, `users/${auth.currentUser.uid}`), {
     "wishlist": wishListArray
   })

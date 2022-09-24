@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import styles from "./Styles.module.scss";
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { DataContext } from '../../App';
-import ProductCard from '../../components/ProductCard';
+import { DataContext } from 'App';
+import ProductCard from 'components/ProductCard/ProductCard';
 import "swiper/css";
 import "swiper/css/pagination";
 import "./Style.css"

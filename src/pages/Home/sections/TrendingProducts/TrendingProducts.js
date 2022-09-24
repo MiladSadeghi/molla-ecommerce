@@ -2,10 +2,10 @@ import { Container, Grid } from '@mui/material';
 import React, { useState, useContext, useEffect } from 'react';
 import styles from "./Styles.module.scss"
 import { Box, Tab, Tabs as Tbs } from '@mui/material';
-import { DataContext } from '../../App';
+import { DataContext } from 'App';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ProductCard from '../../components/ProductCard';
+import ProductCard from 'components/ProductCard/ProductCard';
 import { v4 } from 'uuid';
 import "swiper/css";
 import "./Style.css";

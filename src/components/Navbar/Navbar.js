@@ -3,13 +3,13 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import Call from './Call';
 import SignInSignUp from './SignInSignUp';
 import styles from "./Styles.module.scss";
-import logo from "../../images/molla-logo.png"
+import logo from "images/molla-logo.png"
 import WishList from './WishList';
 import CheckOut from './CheckOut';
-import { AnonymouslySignIn, auth, GetUserWishList } from '../../components/Firebase';
+import { AnonymouslySignIn, auth, GetUserWishList } from '../Firebase';
 import MuiAlert from '@mui/material/Alert';
 import { onAuthStateChanged } from 'firebase/auth';
-import { DataContext } from '../../App';
+import { DataContext } from 'App';
 
 export const Context = createContext();
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -41,7 +41,6 @@ const Navbar = () => {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        console.log(user);
         data[5](await GetUserWishList());
       } else {
         AnonymouslySignIn();

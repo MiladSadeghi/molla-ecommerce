@@ -4,11 +4,11 @@ import Loading from "./components/Loading";
 import { useState, createContext, useEffect } from 'react';
 import { AddToWishList, db } from './components/Firebase';
 import { onValue, ref } from 'firebase/database';
-import Footer from "./sections/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import { auth } from './components/Firebase';
 
-const Home = lazy(() => import('./pages/Home'));
-const Navbar = lazy(() => import('./sections/Navbar/Navbar'));
+const Home = lazy(() => import('./pages/Home/Home'));
+const Navbar = lazy(() => import('./components/Navbar/Navbar'));
 export const DataContext = createContext();
 
 function App() {

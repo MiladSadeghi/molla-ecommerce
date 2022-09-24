@@ -1,9 +1,9 @@
 import { Box, Checkbox, FormControlLabel  } from '@mui/material';
 import React, { useEffect, useState, useContext } from 'react';
 import { VscArrowSmallRight } from 'react-icons/vsc';
-import { handleFirebaseError, validateSignUp } from './Handle';
+import { handleFirebaseError, validateSignUp } from '../Handle';
 import { Bars } from  'react-loader-spinner'
-import { registerWithUserAndPassword } from '../../components/Firebase';
+import { registerWithUserAndPassword } from '../Firebase';
 import { Context } from './Navbar';
 import styles from './Styles.module.scss';
 

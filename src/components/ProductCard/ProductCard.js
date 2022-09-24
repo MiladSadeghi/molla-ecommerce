@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { FiHeart } from "react-icons/fi"
 import { MdAddShoppingCart } from "react-icons/md";
 import { GiBinoculars } from "react-icons/gi";
-import { DataContext } from '../App';
+import { DataContext } from 'App';
 import styles from "./ProductCard.module.scss";
-import { AddToWishList } from './Firebase';
+import { AddToWishList } from '../Firebase';
 
 function randomNumber() {
   return Math.floor(Math.random() * (5 - 1 + 1) + 1)

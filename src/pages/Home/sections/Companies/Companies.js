@@ -1,8 +1,7 @@
 import { Container } from '@mui/material';
-import React, {useContext, useEffect}  from 'react';
-import styles from "./Styles.module.scss";
+import React, { useContext }  from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import {DataContext} from "../../App";
+import { DataContext } from 'App';
 import "swiper/css";
 import "./Style.css"
 
