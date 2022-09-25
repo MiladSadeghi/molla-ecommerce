@@ -11,9 +11,16 @@ const Wishlist = () => {
   const navigate = useNavigate();
   console.log(data)
 
-  function handleClick(event) {
+  const handleClick = (event) => {
     event.preventDefault();
     navigate(event.target.pathname)
+  }
+
+  const deleteFromWishlist = (event) => {
+    let array = data[4];
+    const productIndex = array.indexOf(event.currentTarget.id);
+    array.splice(productIndex, 1);
+    data[5](prevState => [...array]);
   }
 
   return (
@@ -77,8 +84,8 @@ const Wishlist = () => {
                       </button>
                     </td>
                     <td>
-                      <div className={styles.deleteBtn}>
-                        <Close />
+                      <div className={styles.deleteBtn} onClick={deleteFromWishlist} id={data[0][item].id}>
+                        <Close  />
                       </div>
                     </td>
                   </tr>
