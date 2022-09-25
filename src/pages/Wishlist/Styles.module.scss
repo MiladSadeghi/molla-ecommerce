@@ -171,3 +171,24 @@
     }
   }
 }
+
+.emptyCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(
+    180deg,
+    rgba(51, 51, 51, 0.4) 0%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+
+  img {
+    width: 20%;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+  }
+
+  p {
+    font-size: 2rem;
+  }
+}
