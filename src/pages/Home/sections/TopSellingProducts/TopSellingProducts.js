@@ -27,8 +27,8 @@ const TopSellingProducts = () => {
   useEffect(() => {
     if(Object.keys(context).length !== 0) {
     Object.keys(productDivider).forEach(item1 => {
-      Object.values(context.TopSelling).forEach((item2)=> {
-        if(item1 === item2.category) {
+      Object.values(context).forEach((item2)=> {
+        if(item1 === item2.category && item2.section === "TopSelling") {
             setProductDivider(prevState => ({
               ...prevState, [item1]: [...prevState[item1], item2]
             }))
@@ -37,12 +37,12 @@ const TopSellingProducts = () => {
       })
       setProductDivider(prevState => ({
         ...prevState, "All": [
-          context.TopSelling["44543398"], 
-          context.TopSelling["38948539"], 
-          context.TopSelling["69372685"], 
-          context.TopSelling["59293665"], 
-          context.TopSelling["47253176"], 
-          context.TopSelling["44037468"], 
+          context["44543398"], 
+          context["38948539"], 
+          context["69372685"], 
+          context["59293665"], 
+          context["47253176"], 
+          context["44037468"], 
         ]
       }))
     }

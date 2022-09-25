@@ -36,7 +36,7 @@ const DealsOutlet = () => {
           <Grid item lg={3}>
           {
             Object.keys(context[0]).length > 0 && 
-            <ProductCard data={context[0].DealsOutlet["15080249"]}>
+            <ProductCard data={context[0]["15080249"]}>
               <span>Was $3,599.99</span>
             </ProductCard>
           }
@@ -44,7 +44,7 @@ const DealsOutlet = () => {
           <Grid item lg={3}>
           {
             Object.keys(context[0]).length > 0 && 
-            <ProductCard data={context[0].DealsOutlet["48411537"]}>
+            <ProductCard data={context[0]["48411537"]}>
               <span>Was $200.99</span>
             </ProductCard>
           }

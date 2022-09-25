@@ -45,7 +45,9 @@ const Featured = () => {
         >
           {
             Object.keys(context[0]).length > 0 && 
-            Object.values(context[0].Featured).map((item) => <SwiperSlide key={item.title}><ProductCard  data={item}/></SwiperSlide>)
+            Object.values(context[0]).map((item) => 
+              item.section === "Featured" && <SwiperSlide key={item.title}><ProductCard  data={item}/></SwiperSlide>
+            )
           }
         </Swiper>
       </Box>

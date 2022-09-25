@@ -1,11 +1,13 @@
 import { CssBaseline } from '@mui/material';
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
 import Loading from "./components/Loading";
 import { useState, createContext, useEffect } from 'react';
-import { AddToWishList, db } from './components/Firebase';
+import { AddToWishList, db, GetUserWishList } from './components/Firebase';
 import { onValue, ref } from 'firebase/database';
 import Footer from "./components/Footer/Footer";
 import { auth } from './components/Firebase';
+import { Route, Routes } from 'react-router-dom';
+import WishList from 'pages/Wishlist/Wishlist';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
@@ -15,6 +17,7 @@ function App() {
   const [product, setProduct] = useState([]);
   const [logos, setLogos] = useState([]);
   const [wishList, setWishList] = useState([]);
+  const oneTime = useRef(false);
 
   useEffect(() => {
     const products = ref(db, '/products');
@@ -33,7 +36,15 @@ function App() {
 
   useEffect(() => {
     if (auth.currentUser) {
+      GetUserWishList();
+    }
+  }, [])
+
+  useEffect(() => {
+    if (oneTime && auth.currentUser) {
       AddToWishList(wishList);
+    } else {
+      oneTime.current = true;
     }
   }, [wishList])
 
@@ -42,7 +53,10 @@ function App() {
       <CssBaseline />
       <Suspense fallback={<Loading />}>
         <Navbar />
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/wishlist' element={<WishList />} />
+        </Routes>
         <Footer />
       </Suspense>
     </DataContext.Provider>

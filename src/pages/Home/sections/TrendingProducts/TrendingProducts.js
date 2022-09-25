@@ -25,8 +25,8 @@ const TrendingProducts = () => {
   useEffect(() => {
     if(Object.keys(context).length !== 0) {
     Object.keys(productDivider).forEach(item1 => {
-      Object.values(context.TrendingProducts).forEach((item2)=> {
-        if(item1 === item2.category) {
+      Object.values(context).forEach((item2)=> {
+        if(item1 === item2.category && item2.section === "TrendingProducts") {
             setProductDivider(prevState => ({
               ...prevState, [item1]: [...prevState[item1], item2]
             }))
@@ -35,12 +35,12 @@ const TrendingProducts = () => {
       })
       setProductDivider(prevState => ({
         ...prevState, "All": [
-          context.TrendingProducts["15725369"], 
-          context.TrendingProducts["03078624"], 
-          context.TrendingProducts["85358976"], 
-          context.TrendingProducts["08366542"], 
-          context.TrendingProducts["32315657"], 
-          context.TrendingProducts["47230516"], 
+          context["15725369"], 
+          context["03078624"], 
+          context["85358976"], 
+          context["08366542"], 
+          context["32315657"], 
+          context["47230516"], 
         ]
       }))
     }

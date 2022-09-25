@@ -10,6 +10,7 @@ import { AnonymouslySignIn, auth, GetUserWishList } from '../Firebase';
 import MuiAlert from '@mui/material/Alert';
 import { onAuthStateChanged } from 'firebase/auth';
 import { DataContext } from 'App';
+import { Link } from 'react-router-dom';
 
 export const Context = createContext();
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -71,7 +72,9 @@ const Navbar = () => {
         </Box>
         <hr className={styles.hr} />
         <Box display={"flex"} justifyContent={"space-between"} margin={"2rem 0"}>
-          <Box component={"img"} src={logo} alt="logo" />
+          <Link to={'/'}>
+            <Box component={"img"} src={logo} alt="logo" />
+          </Link>
           <Box component={"div"} sx={{display: "flex"}}>
             <WishList />
             <CheckOut /> 

@@ -1,7 +1,8 @@
 import { FavoriteBorder } from '@mui/icons-material';
-import { Badge, Box, Button, createTheme, ThemeProvider } from '@mui/material';
+import { Badge, Box, createTheme, ThemeProvider } from '@mui/material';
 import React, { useState, useContext } from 'react';
-import { DataContext } from '../../App';
+import { Link } from 'react-router-dom';
+import { DataContext } from 'App';
 
 const theme = createTheme({
   palette: {
@@ -13,18 +14,19 @@ const theme = createTheme({
 });
 
 const WishList = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
   const [invisible, setInvisible] = useState(false);
   const data = useContext(DataContext);
 
   return (
     <ThemeProvider theme={theme}>
-      <Box component={"div"} sx={{cursor: "pointer"}} onClick={handleOpen}>
-        <Badge color={'orange'} badgeContent={data[4]?.length} max={10} invisible={invisible}>
-          <FavoriteBorder  />
-        </Badge>
-      </Box>
+      <Link style={{color: "#fff", textDecoration: "none"}} to={"/wishlist"}>
+        <Box component={"div"} sx={{cursor: "pointer", display: "flex", alignItems: "center", flexDirection: "column"}}>
+          <Badge color={'orange'} badgeContent={data[4]?.length} max={10} invisible={invisible}>
+            <FavoriteBorder  />
+          </Badge>
+          <p style={{fontSize: "0.625rem", color: "#777", marginTop: "2px"}}>Wishlist</p>
+        </Box>
+      </Link>
     </ThemeProvider>
   );
 }

@@ -12,22 +12,15 @@ const theme = createTheme({
 });
 
 const CheckOut = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [count, setCount] = useState(0);
   const [invisible, setInvisible] = useState(false);
-
-  const handleBadgeVisibility = () => {
-    setInvisible(!invisible);
-  };
 
   return (
     <ThemeProvider theme={theme}>
-      <Box component={"div"} sx={{cursor: "pointer", ml: 2}} onClick={handleOpen}>
-        <Badge color={'orange'} badgeContent={count} max={10} invisible={invisible}>
+      <Box component={"div"} sx={{cursor: "pointer", ml: 3, display: "flex", alignItems: "center", flexDirection: "column"}} >
+        <Badge color={'orange'} badgeContent={0} max={10} invisible={invisible}>
           <ShoppingCartOutlinedIcon  />
         </Badge>
+        <p style={{fontSize: "0.625rem", color: "#777", marginTop: "2px"}}>Cart</p>
       </Box>
     </ThemeProvider>
   );
