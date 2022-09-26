@@ -123,7 +123,7 @@
   .deleteBtn {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     color: #cccccc;
 
     svg {
@@ -183,12 +183,8 @@
     rgba(255, 255, 255, 0.5) 100%
   );
 
-  img {
-    width: 20%;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-
   p {
     font-size: 2rem;
+    padding: 7rem 0;
   }
 }

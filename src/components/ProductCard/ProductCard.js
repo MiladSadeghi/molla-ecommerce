@@ -5,7 +5,6 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { GiBinoculars } from "react-icons/gi";
 import { DataContext } from 'App';
 import styles from "./ProductCard.module.scss";
-import { AddToWishList } from '../Firebase';
 
 function randomNumber() {
   return Math.floor(Math.random() * (5 - 1 + 1) + 1)
@@ -13,10 +12,32 @@ function randomNumber() {
 
 const ProductCard = (props) => {
   const data = useContext(DataContext);
-  const addToCart = async (event) => {
+
+  const addToWishlist = async (event) => {
     if (!data[4].includes(event.currentTarget.getAttribute("productid"))) {
-      data[5](prevState => [...prevState, event.currentTarget.getAttribute("productid")] , AddToWishList(data[4]));
+      data[5](prevState => [...prevState, event.currentTarget.getAttribute("productid")]);
     }
+  }
+
+  const addToCart = (event) => {
+    const productID = event.currentTarget.getAttribute("productid");
+    if (data[6].some((cartItem) => cartItem.product === productID)) {
+      data[7]((cart) =>
+        cart.map((cartItem) =>
+          cartItem.product === productID
+            ? {
+                ...cartItem,
+                amount: cartItem.amount + 1
+              }
+            : cartItem
+        )
+      );
+      return;
+    }
+    data[7]((cart) => [
+      ...cart,
+      {product: productID, amount: 1 } // <-- initial amount 1
+    ]);
   }
 
   return (
@@ -28,7 +49,7 @@ const ProductCard = (props) => {
           alt="green iguana"
           sx={{ width: "100%" }}
         />
-        <div className={styles.addToWishList}>
+        <div className={styles.addToWishList} productid={props.data.id} onClick={addToWishlist}>
           <FiHeart />
           <div className={styles.top}>
             <p>add to wishlist</p>

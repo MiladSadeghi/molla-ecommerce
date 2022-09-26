@@ -79,4 +79,16 @@ const AddToWishList = async (wishListArray) => {
   })
 }
 
-export { db, auth, signInWithGoogle, LoginWithEmailAndPassword, AnonymouslySignIn, GetUserWishList, AddToWishList }
+const GetUserCart = async () => {
+  const dbRef = ref(db);
+  const data = await get(child(dbRef, `users/${auth.currentUser.uid}/cart`));
+  return (data.exists() ? data.val() : [])
+}
+
+const AddToCartList = async (cartListArray) => {
+  await update(ref(db, `users/${auth.currentUser.uid}`), {
+    "cart": cartListArray
+  })
+}
+
+export { db, auth, signInWithGoogle, LoginWithEmailAndPassword, AnonymouslySignIn, GetUserWishList, AddToWishList, GetUserCart, AddToCartList }

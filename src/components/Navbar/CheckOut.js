@@ -1,7 +1,7 @@
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { Badge, Box, Button, createTheme, ThemeProvider } from '@mui/material';
-import React, { useState } from 'react';
-
+import { Badge, Box, createTheme, ThemeProvider } from '@mui/material';
+import React, { useState, useContext } from 'react';
+import { DataContext } from 'App';
 const theme = createTheme({
   palette: {
     orange: {
@@ -13,11 +13,11 @@ const theme = createTheme({
 
 const CheckOut = () => {
   const [invisible, setInvisible] = useState(false);
-
+  const data = useContext(DataContext);
   return (
     <ThemeProvider theme={theme}>
       <Box component={"div"} sx={{cursor: "pointer", ml: 3, display: "flex", alignItems: "center", flexDirection: "column"}} >
-        <Badge color={'orange'} badgeContent={0} max={10} invisible={invisible}>
+        <Badge color={'orange'} badgeContent={data[6].length} max={10} invisible={invisible}>
           <ShoppingCartOutlinedIcon  />
         </Badge>
         <p style={{fontSize: "0.625rem", color: "#777", marginTop: "2px"}}>Cart</p>

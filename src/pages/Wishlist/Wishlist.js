@@ -9,7 +9,6 @@ import emptyCart from "images/shopping-bag.png"
 const Wishlist = () => {
   const data = useContext(DataContext);
   const navigate = useNavigate();
-  console.log(data)
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -23,12 +22,32 @@ const Wishlist = () => {
     data[5](prevState => [...array]);
   }
 
+  const addToCart = (event) => {
+    const productID = event.currentTarget.id;
+    if (data[6].some((cartItem) => cartItem.product === productID)) {
+      data[7]((cart) =>
+        cart.map((cartItem) =>
+          cartItem.product === productID
+            ? {
+                ...cartItem,
+                amount: cartItem.amount + 1
+              }
+            : cartItem
+        )
+      );
+      return;
+    }
+    data[7]((cart) => [
+      ...cart,
+      {product: productID, amount: 1 } // <-- initial amount 1
+    ]);
+  }
+
   return (
     <>
     {
       data[4].length === 0 ?
         <div className={styles.emptyCart}>
-          <img src={emptyCart} alt="empty_cart" />
           <p>You must have a wishlist! do not have one?</p>
         </div>
         :
@@ -86,7 +105,7 @@ const Wishlist = () => {
                         <h4 className={styles.price}>${data[0][item].price}</h4>
                       </td>
                       <td className={styles.addToCardBtn}>
-                        <button>
+                        <button onClick={addToCart} id={data[0][item].id}>
                           <AddShoppingCart />
                           ADD TO CART
                         </button>
