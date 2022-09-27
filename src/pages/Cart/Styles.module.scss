@@ -252,3 +252,10 @@
     }
   }
 }
+
+.notActive {
+  opacity: 0.4;
+  background: #c96 !important;
+  color: #fff !important;
+  cursor: not-allowed !important;
+}

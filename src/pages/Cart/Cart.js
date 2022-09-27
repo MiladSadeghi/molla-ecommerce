@@ -188,8 +188,7 @@ const Cart = () => {
                       Total
                       <span>${formatToCurrency((subTotal() + Number(shipping)).toFixed(2))}</span>
                     </p>
-                    <button className={styles.checkOutBtn} disabled={auth.currentUser.isAnonymous} onClick={checkOut} 
-                    style={auth.currentUser.isAnonymous && {opacity: 0.4, background: "#c96", color: "#fff", cursor: "default"}} >
+                    <button className={`${styles.checkOutBtn} ${auth.currentUser.isAnonymous && styles.notActive}`} disabled={auth.currentUser.isAnonymous} onClick={checkOut} >
                       {
                         auth.currentUser.isAnonymous ?
                         "You should sign in first":
