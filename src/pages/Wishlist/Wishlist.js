@@ -5,7 +5,6 @@ import styles from "./Styles.module.scss";
 import { useNavigate } from 'react-router-dom';
 import { NavigateNext, AddShoppingCart, Close } from '@mui/icons-material';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaPinterest } from "react-icons/fa";
-import emptyCart from "images/shopping-bag.png"
 const Wishlist = () => {
   const data = useContext(DataContext);
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ const Wishlist = () => {
     }
     data[7]((cart) => [
       ...cart,
-      {product: productID, amount: 1 } // <-- initial amount 1
+      {product: productID, amount: 1 }
     ]);
   }
 

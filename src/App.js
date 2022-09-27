@@ -9,6 +9,7 @@ import { auth } from './components/Firebase';
 import { Route, Routes } from 'react-router-dom';
 import WishList from 'pages/Wishlist/Wishlist';
 import { onAuthStateChanged } from 'firebase/auth';
+import Cart from './pages/Cart/Cart';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
@@ -58,7 +59,6 @@ function App() {
 
   useEffect(() => {
     if (updateCart && auth.currentUser) {
-      console.log(cartList)
       AddToCartList(cartList);
     } else {
       updateCart.current = true;
@@ -73,6 +73,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/wishlist' element={<WishList />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
         <Footer />
       </Suspense>
