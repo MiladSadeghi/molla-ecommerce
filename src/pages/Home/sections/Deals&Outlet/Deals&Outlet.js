@@ -7,7 +7,7 @@ import { DataContext } from "App";
 import ProductCard from 'components/ProductCard/ProductCard';
 import Counter from './Counter';
 const DealsOutlet = () => {
-  const context = useContext(DataContext);
+  const {product} = useContext(DataContext);
   
   return (
     <div className={styles.main}>
@@ -35,16 +35,16 @@ const DealsOutlet = () => {
           </Grid>
           <Grid item lg={3}>
           {
-            Object.keys(context[0]).length > 0 && 
-            <ProductCard data={context[0]["15080249"]}>
+            Object.keys(product).length > 0 && 
+            <ProductCard data={product["15080249"]}>
               <span>Was $3,599.99</span>
             </ProductCard>
           }
           </Grid>
           <Grid item lg={3}>
           {
-            Object.keys(context[0]).length > 0 && 
-            <ProductCard data={context[0]["48411537"]}>
+            Object.keys(product).length > 0 && 
+            <ProductCard data={product["48411537"]}>
               <span>Was $200.99</span>
             </ProductCard>
           }

@@ -1,5 +1,5 @@
-import { AppBar, Container, Snackbar, Box, Fade } from '@mui/material';
-import React, { useEffect, useState, createContext } from 'react';
+import { AppBar, Container, Box } from '@mui/material';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 import Call from './Call';
 import SignInSignUp from './SignInSignUp';
 import styles from "./Styles.module.scss";
@@ -7,42 +7,9 @@ import logo from "images/molla-logo.png"
 import WishList from './WishList';
 import CheckOut from './CheckOut';
 import { auth } from '../Firebase';
-import MuiAlert from '@mui/material/Alert';
 import { Link } from 'react-router-dom';
 
-export const Context = createContext();
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
 const Navbar = () => {
-  const [userDetails, setUserDetails] = useState({
-    logged: false,
-    userName: ""
-  });
-  const [snackbar, setSnackbar] = useState({
-    message: "",
-    open: false,
-    severity: ""
-  })
-  const [useAuth] = useState(auth);
-
-  useEffect(() => {
-    if (useAuth.currentUser) {
-      setUserDetails({
-        logged: true,
-        userName: useAuth.currentUser.displayName
-      })
-    }
-  }, [useAuth.currentUser, useAuth]);
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setSnackbar({...snackbar, open: !snackbar.open});
-  };
 
   return (
     <AppBar position='relative' component="nav" sx={{ background: "#333333"}}>
@@ -50,11 +17,9 @@ const Navbar = () => {
         <Box display={"flex"} justifyContent={"space-between"} py={"8.5px"}>
           <Call />
           {
-            (userDetails.logged && userDetails.userName !== null) ?
-            <h5 className={styles.username}>{userDetails.userName}</h5> : 
-            <Context.Provider value={{snackbar, setSnackbar}}>
-              <SignInSignUp />
-            </Context.Provider>
+            (auth.currentUser && !auth.currentUser.isAnonymous) ?
+            <h5 className={styles.username}>{auth.currentUser.displayName}</h5> : 
+            <SignInSignUp />
           }
         </Box>
         <hr className={styles.hr} />
@@ -67,11 +32,6 @@ const Navbar = () => {
             <CheckOut /> 
           </Box>
         </Box>
-        <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={handleClose} TransitionComponent={Fade}>
-          <Alert onClose={handleClose} severity={snackbar.severity} sx={{ width: '100%' }}>
-            {snackbar.message}
-          </Alert>
-        </Snackbar>
       </Container>
     </AppBar>
   );

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref, update } from "firebase/database";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile, signInAnonymously, EmailAuthProvider, linkWithCredential } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithPopup, updateProfile, signInAnonymously, signInWithEmailAndPassword } from "firebase/auth";
 import { handleFirebaseError } from "./Handle";
 
 const firebaseConfig = {
@@ -21,57 +21,52 @@ const provider = new GoogleAuthProvider();
 
 const signInWithGoogle = async (setSnackbar) => {
   const prevUserData = await GetPrevUserData();
-  signInWithPopup(auth, provider)
-    .then(async (result) => {
-      await update(ref(db, `users/${auth.currentUser.uid}`), {
-        uid: result.user.uid,
-        displayName: result.user.displayName,
-        ...prevUserData
-      });
-      setSnackbar({
-        ...handleFirebaseError("golg"),
-        open: true,
-      })
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-export const registerWithUserAndPassword = async (inputs, setSnackbar) => {
-  const prevUserData = await GetPrevUserData();
-  await createUserWithEmailAndPassword(auth, inputs.email, inputs.password);
-  await updateProfile(auth.currentUser, {
-    displayName: inputs.userName
-  })
-  await update(ref(db, `users/${auth.currentUser.uid}`), {
-    uid: auth.currentUser.uid,
-    displayName: inputs.userName,
-    ...prevUserData
-  });
-  setSnackbar({
-    ...handleFirebaseError("regd"),
-    open: true,
-  })
-}
-
-const LoginWithEmailAndPassword = async (inputs, setSnackbar) => {
-  const credential = EmailAuthProvider.credential(inputs.email, inputs.password);
-  const prevUserData = await GetPrevUserData();
-
   try {
-    await linkWithCredential(auth.currentUser, credential);
+    const signInLogin = await signInWithPopup(auth, provider)
+    await update(ref(db, `users/${auth.currentUser.uid}`), {
+      uid: signInLogin.user.uid,
+      displayName: signInLogin.user.displayName,
+      ...prevUserData
+    });
     setSnackbar({
-      ...handleFirebaseError("lgsc"),
+      ...handleFirebaseError("golg"),
       open: true,
     })
-    AddToUser(prevUserData);
-
   } catch (error) {
     setSnackbar({
       ...handleFirebaseError(error.code),
       open: true,
     })
+  }
+};
+
+const registerWithUserAndPassword = async (inputs) => {
+  try {
+    const prevUserData = await GetPrevUserData();
+    await createUserWithEmailAndPassword(auth, inputs.email, inputs.password);
+    await updateProfile(auth.currentUser, {
+      displayName: inputs.userName
+    })
+    await update(ref(db, `users/${auth.currentUser.uid}`), {
+      uid: auth.currentUser.uid,
+      displayName: inputs.userName,
+      ...prevUserData
+    })
+  } catch (error) {
+    throw error;
+  }
+}
+
+const LoginWithEmailAndPassword = async (inputs) => {
+  try {
+    // const prevUserData = await GetPrevUserData();
+    // console.log(prevUserData)
+    await signInWithEmailAndPassword(auth, inputs.email, inputs.password);
+    // await update(ref(db, `users/${auth.currentUser.uid}`), {
+    //   ...prevUserData
+    // });
+  } catch (error) {
+    throw error;
   }
 }
 
@@ -115,10 +110,4 @@ const GetPrevUserData = async () => {
   };
 }
 
-const AddToUser = async (Data) => {
-  await update(ref(db, `users/${auth.currentUser.uid}`), {
-    ...Data
-  })
-}
-
-export { db, auth, signInWithGoogle, LoginWithEmailAndPassword, AnonymouslySignIn, GetUserWishList, AddToWishList, GetUserCart, AddToCartList }
+export { db, auth, signInWithGoogle, registerWithUserAndPassword, LoginWithEmailAndPassword, AnonymouslySignIn, GetUserWishList, AddToWishList, GetUserCart, AddToCartList }

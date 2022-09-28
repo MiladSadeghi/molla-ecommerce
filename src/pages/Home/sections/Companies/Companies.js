@@ -6,7 +6,7 @@ import "swiper/css";
 import "./Style.css"
 
 const Companies = () => {
-  const data = useContext(DataContext);
+  const {logos} = useContext(DataContext);
   return (
     <Container>
       <Swiper className="mySwiper"
@@ -30,8 +30,8 @@ const Companies = () => {
           }
         }}>
         {
-          data[2].length &&
-          data[2].map((item, index) => {
+          logos.length &&
+          logos.map((item, index) => {
             return (<SwiperSlide key={index}>
               <img src={item} alt="" />
             </SwiperSlide>)

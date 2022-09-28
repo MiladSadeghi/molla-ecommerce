@@ -18,16 +18,16 @@ const TopSellingProducts = () => {
     "Smartwatches": [],
     "Accessories": [],
   })
-  const [context,] = useContext(DataContext);
+  const {product} = useContext(DataContext);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   useEffect(() => {
-    if(Object.keys(context).length !== 0) {
+    if(Object.keys(product).length !== 0) {
     Object.keys(productDivider).forEach(item1 => {
-      Object.values(context).forEach((item2)=> {
+      Object.values(product).forEach((item2)=> {
         if(item1 === item2.category && item2.section === "TopSelling") {
             setProductDivider(prevState => ({
               ...prevState, [item1]: [...prevState[item1], item2]
@@ -37,16 +37,16 @@ const TopSellingProducts = () => {
       })
       setProductDivider(prevState => ({
         ...prevState, "All": [
-          context["44543398"], 
-          context["38948539"], 
-          context["69372685"], 
-          context["59293665"], 
-          context["47253176"], 
-          context["44037468"], 
+          product["44543398"], 
+          product["38948539"], 
+          product["69372685"], 
+          product["59293665"], 
+          product["47253176"], 
+          product["44037468"], 
         ]
       }))
     }
-  }, [context])
+  }, [product])
 
   return (
     <Container className={"top-selling"}>
@@ -92,7 +92,7 @@ const TopSellingProducts = () => {
               className={` mySwiper`}
             >
               {
-                Object.keys(context).length > 0 && 
+                Object.keys(product).length > 0 && 
                 Object.values(productDivider)[value].map(item=> 
                   <SwiperSlide key={v4()}><ProductCard sty={{height: "100%"}} data={item}/></SwiperSlide>
                 )

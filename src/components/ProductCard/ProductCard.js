@@ -11,18 +11,18 @@ function randomNumber() {
 }
 
 const ProductCard = (props) => {
-  const data = useContext(DataContext);
+  const {wishList, setWishList, cartList, setCartList} = useContext(DataContext);
 
   const addToWishlist = async (event) => {
-    if (!data[4].includes(event.currentTarget.getAttribute("productid"))) {
-      data[5](prevState => [...prevState, event.currentTarget.getAttribute("productid")]);
+    if (!wishList.includes(event.currentTarget.getAttribute("productid"))) {
+      setWishList(prevState => [...prevState, event.currentTarget.getAttribute("productid")]);
     }
   }
 
   const addToCart = (event) => {
     const productID = event.currentTarget.getAttribute("productid");
-    if (data[6].some((cartItem) => cartItem.product === productID)) {
-      data[7]((cart) =>
+    if (cartList.some((cartItem) => cartItem.product === productID)) {
+      setCartList((cart) =>
         cart.map((cartItem) =>
           cartItem.product === productID
             ? {
@@ -34,7 +34,7 @@ const ProductCard = (props) => {
       );
       return;
     }
-    data[7]((cart) => [
+    setCartList((cart) => [
       ...cart,
       {product: productID, amount: 1 } // <-- initial amount 1
     ]);

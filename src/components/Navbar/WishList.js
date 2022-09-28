@@ -15,13 +15,13 @@ const theme = createTheme({
 
 const WishList = () => {
   const [invisible, setInvisible] = useState(false);
-  const data = useContext(DataContext);
+  const {wishList} = useContext(DataContext);
 
   return (
     <ThemeProvider theme={theme}>
       <Link style={{color: "#fff", textDecoration: "none"}} to={"/wishlist"}>
         <Box component={"div"} sx={{cursor: "pointer", display: "flex", alignItems: "center", flexDirection: "column"}}>
-          <Badge color={'orange'} badgeContent={data[4]?.length} max={10} invisible={invisible}>
+          <Badge color={'orange'} badgeContent={wishList?.length} max={10} invisible={invisible}>
             <FavoriteBorder  />
           </Badge>
           <p style={{fontSize: "0.625rem", color: "#777", marginTop: "2px"}}>Wishlist</p>

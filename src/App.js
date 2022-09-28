@@ -1,5 +1,5 @@
 import { CssBaseline } from '@mui/material';
-import { lazy, Suspense, useRef } from "react";
+import { lazy, Suspense, useRef, forwardRef } from "react";
 import Loading from "./components/Loading";
 import { useState, createContext, useEffect } from 'react';
 import { AddToCartList, AddToWishList, AnonymouslySignIn, db, GetUserCart, GetUserWishList } from './components/Firebase';
@@ -9,17 +9,28 @@ import { auth } from './components/Firebase';
 import { Route, Routes } from 'react-router-dom';
 import WishList from 'pages/Wishlist/Wishlist';
 import { onAuthStateChanged } from 'firebase/auth';
+import MuiAlert from '@mui/material/Alert';
+import { Snackbar, Fade } from '@mui/material';
 import Cart from './pages/Cart/Cart';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
 export const DataContext = createContext();
 
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function App() {
   const [product, setProduct] = useState([]);
   const [logos, setLogos] = useState([]);
   const [wishList, setWishList] = useState([]);
   const [cartList, setCartList] = useState([]);
+  const [snackbar, setSnackbar] = useState({
+    message: "",
+    open: false,
+    severity: ""
+  })
   const updateWishlist = useRef(false);
   const updateCart = useRef(false);
 
@@ -41,8 +52,16 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        setWishList(await GetUserWishList());
-        setCartList(await GetUserCart());
+        const userWish = await GetUserWishList();
+        const userCart = await GetUserCart();
+        setWishList((prevState) => [
+          ...prevState,
+          ...userWish
+        ]);
+        setCartList((prevState) => [
+          ...prevState,
+          ...userCart
+        ]);
       } else {
         AnonymouslySignIn();
       }
@@ -65,8 +84,16 @@ function App() {
     }
   }, [cartList])
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSnackbar({...snackbar, open: !snackbar.open});
+  };
+
   return (
-    <DataContext.Provider value={[product, setProduct, logos, setLogos, wishList, setWishList, cartList, setCartList]}>
+    <DataContext.Provider value={{product, setProduct, logos, setLogos, wishList, setWishList, cartList, setCartList, snackbar, setSnackbar}}>
       <CssBaseline />
       <Suspense fallback={<Loading />}>
         <Navbar />
@@ -76,6 +103,11 @@ function App() {
           <Route path='/cart' element={<Cart />} />
         </Routes>
         <Footer />
+        <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={handleClose} TransitionComponent={Fade}>
+          <Alert onClose={handleClose} severity={snackbar.severity} sx={{ width: '100%' }}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Suspense>
     </DataContext.Provider>
   );

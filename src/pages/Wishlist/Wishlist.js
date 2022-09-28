@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { NavigateNext, AddShoppingCart, Close } from '@mui/icons-material';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaPinterest } from "react-icons/fa";
 const Wishlist = () => {
-  const data = useContext(DataContext);
+  const {product, wishList, setWishList, cartList, setCartList} = useContext(DataContext);
   const navigate = useNavigate();
 
   const handleClick = (event) => {
@@ -15,16 +15,16 @@ const Wishlist = () => {
   }
 
   const deleteFromWishlist = (event) => {
-    let array = data[4];
+    let array = wishList;
     const productIndex = array.indexOf(event.currentTarget.id);
     array.splice(productIndex, 1);
-    data[5](prevState => [...array]);
+    setWishList(prevState => [...array]);
   }
 
   const addToCart = (event) => {
     const productID = event.currentTarget.id;
-    if (data[6].some((cartItem) => cartItem.product === productID)) {
-      data[7]((cart) =>
+    if (cartList.some((cartItem) => cartItem.product === productID)) {
+      setCartList((cart) =>
         cart.map((cartItem) =>
           cartItem.product === productID
             ? {
@@ -36,7 +36,7 @@ const Wishlist = () => {
       );
       return;
     }
-    data[7]((cart) => [
+    setCartList((cart) => [
       ...cart,
       {product: productID, amount: 1 }
     ]);
@@ -45,7 +45,7 @@ const Wishlist = () => {
   return (
     <>
     {
-      data[4].length === 0 ?
+      wishList.length === 0 ?
         <div className={styles.emptyCart}>
           <p>You must have a wishlist! do not have one?</p>
         </div>
@@ -90,27 +90,27 @@ const Wishlist = () => {
               </thead>
               <tbody>
                 {
-                  data[4].map(item => 
+                  wishList.map(item => 
                     <tr key={item}>
                       <td>
                         <div className={styles.product}>
                           <div className={styles.imgDiv}>
-                            <img src={data[0][item].urls[0]} alt="product_photo" className={styles.imgCard} />
+                            <img src={product[item].urls[0]} alt="product_photo" className={styles.imgCard} />
                           </div>
-                          <h3>{data[0][item].title}</h3>
+                          <h3>{product[item].title}</h3>
                         </div>
                       </td>
                       <td>
-                        <h4 className={styles.price}>${data[0][item].price}</h4>
+                        <h4 className={styles.price}>${product[item].price}</h4>
                       </td>
                       <td className={styles.addToCardBtn}>
-                        <button onClick={addToCart} id={data[0][item].id}>
+                        <button onClick={addToCart} id={product[item].id}>
                           <AddShoppingCart />
                           ADD TO CART
                         </button>
                       </td>
                       <td>
-                        <div className={styles.deleteBtn} onClick={deleteFromWishlist} id={data[0][item].id}>
+                        <div className={styles.deleteBtn} onClick={deleteFromWishlist} id={product[item].id}>
                           <Close  />
                         </div>
                       </td>

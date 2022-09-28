@@ -3,13 +3,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { VscArrowSmallRight } from 'react-icons/vsc';
 import { FcGoogle } from "react-icons/fc"
 import styles from './Styles.module.scss';
-import { LoginWithEmailAndPassword, signInWithGoogle } from '../Firebase';
+import { GetUserCart, GetUserWishList, LoginWithEmailAndPassword, signInWithGoogle } from '../Firebase';
 import { Bars } from 'react-loader-spinner';
-import { Context } from './Navbar';
+import { DataContext } from 'App';
 import { handleFirebaseError, validateSignIn } from '../Handle';
 
 const SignIn = () => {
-  const {setSnackbar, setUserDetails} = useContext(Context);
+  const {setSnackbar} = useContext(DataContext);
   const [inputValue, setInputValue] = useState({
     email: "",
     password: ""
@@ -38,13 +38,18 @@ const SignIn = () => {
 
   const loginUser = async () => {
     if (!Object.keys(errors).length)  {
-      setLoginButton({
-        children: <Bars height="20" width="80" color="#fcb941" />,
-        status: true
-      })
       try {
-        await LoginWithEmailAndPassword(inputValue, setSnackbar, setUserDetails);
+        setLoginButton({
+          children: <Bars height="20" width="80" color="#fcb941" />,
+          status: true
+        })
+        await LoginWithEmailAndPassword(inputValue);
+        setSnackbar({
+          ...handleFirebaseError("lgsc"),
+          open: true,
+        })
       } catch (error) {
+        console.log(error)
         setLoginButton({
           children: <>LOG IN <VscArrowSmallRight /></>,
           status: false
@@ -53,7 +58,6 @@ const SignIn = () => {
           ...handleFirebaseError(error.code),
           open: true,
         })
-        console.log(error.code)
       }
     } else {
       setTouched({

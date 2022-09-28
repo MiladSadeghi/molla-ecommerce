@@ -14,12 +14,12 @@ const theme = createTheme({
 
 const CheckOut = () => {
   const [invisible, setInvisible] = useState(false);
-  const data = useContext(DataContext);
+  const {cartList} = useContext(DataContext);
   return (
     <ThemeProvider theme={theme}>
       <Link style={{color: "#fff", textDecoration: "none"}} to={"/cart"}>
         <Box component={"div"} sx={{cursor: "pointer", ml: 3, display: "flex", alignItems: "center", flexDirection: "column"}} >
-          <Badge color={'orange'} badgeContent={data[6].length} max={10} invisible={invisible}>
+          <Badge color={'orange'} badgeContent={cartList.length} max={10} invisible={invisible}>
             <ShoppingCartOutlinedIcon  />
           </Badge>
           <p style={{fontSize: "0.625rem", color: "#777", marginTop: "2px"}}>Cart</p>

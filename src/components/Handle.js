@@ -68,18 +68,20 @@ export const handleFirebaseError = (error) => {
       return {message: "e-mail is already linked to an account or is invalid", severity: "error"}
     case "auth/network-request-failed":
       return {message: "check Your Connection!.", severity: "error"}
-    case "regd":
-      return {message: "thanks for register.", severity: "success"}
-    case "lgsc":
-    case "golg":
-      return {message: "welcome back...", severity: "success"}
-    case "auth/user-not-found":
-      return {message: "user not found!", severity: "error"}
-    case "auth/wrong-password":
+      case "auth/user-not-found":
+        return {message: "user not found!", severity: "error"}
+        case "auth/wrong-password":
       return {message: "your password is wrong", severity: "error"}
-    case "auth/too-many-requests":
-      return {message: "to many request, try later.", severity: "error"}
-    default:
-      break;
+      case "auth/too-many-requests":
+        return {message: "to many request, try later.", severity: "error"}
+      case "regd":
+        return {message: "thanks for register.", severity: "success"}
+      case "lgsc":
+      case "golg":
+        return {message: "welcome back...", severity: "success"}
+      case "okcheckout":
+        return {message: "Thank you for purchase. Please remember your purchase process takes 2-3 days", severity: "success"}
+      default:
+        return {message: "Something bad happened! try again later...", severity: "error"}
   }
 }

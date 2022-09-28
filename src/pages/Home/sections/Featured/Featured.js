@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import "./Style.css"
 
 const Featured = () => {
-  const context = useContext(DataContext);
+  const {product} = useContext(DataContext);
   return (
     <Container className={`${styles.featured} featured`}>
       <Typography variant="h1" component="span" className={styles.span}>
@@ -44,8 +44,8 @@ const Featured = () => {
           className={`${styles.swip} mySwiper`}
         >
           {
-            Object.keys(context[0]).length > 0 && 
-            Object.values(context[0]).map((item) => 
+            Object.keys(product).length > 0 && 
+            Object.values(product).map((item) => 
               item.section === "Featured" && <SwiperSlide key={item.title}><ProductCard  data={item}/></SwiperSlide>
             )
           }

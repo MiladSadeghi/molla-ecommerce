@@ -3,12 +3,12 @@ import React, { useEffect, useState, useContext } from 'react';
 import { VscArrowSmallRight } from 'react-icons/vsc';
 import { handleFirebaseError, validateSignUp } from '../Handle';
 import { Bars } from  'react-loader-spinner'
-import { registerWithUserAndPassword } from '../Firebase';
-import { Context } from './Navbar';
+import { GetUserCart, GetUserWishList, registerWithUserAndPassword } from '../Firebase';
+import { DataContext } from 'App';
 import styles from './Styles.module.scss';
 
 const Register = () => {
-  const {setSnackbar, setUserDetails} = useContext(Context);
+  const {setSnackbar, setWishList, setCartList} = useContext(DataContext);
   const [inputValue, setInputValue] = useState({
     email: "",
     userName: "",
@@ -49,13 +49,19 @@ const Register = () => {
 
   const registerUser = async () => {
     if (!Object.keys(errors).length)  {
-      setRegisterButton({
-        children: <Bars height="20" width="80" color="#fcb941" />,
-        status: true
-      })
       try {
-        await registerWithUserAndPassword(inputValue, setSnackbar, setUserDetails);
-
+        setRegisterButton({
+          children: <Bars height="20" width="80" color="#fcb941" />,
+          status: true
+        })
+        await registerWithUserAndPassword(inputValue, setWishList, setCartList);
+        setWishList(await GetUserWishList());
+        setCartList(await GetUserCart());
+        setSnackbar({
+          ...handleFirebaseError("regd"),
+          open: true,
+        })
+        
       } catch (error) {
         setRegisterButton({
           children: <>SIGN UP <VscArrowSmallRight /></>,

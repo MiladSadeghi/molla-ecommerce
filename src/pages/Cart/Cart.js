@@ -1,15 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from 'App';
-import { Breadcrumbs, Container, FormControl, FormControlLabel, FormLabel, Grid, Link, Radio, RadioGroup } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Breadcrumbs, Container, FormControl, FormControlLabel, Grid, Link as BCLink, Radio, RadioGroup } from '@mui/material';
+import { useNavigate, Link } from 'react-router-dom';
 import { NavigateNext, Close } from '@mui/icons-material';
 import {HiPlus, HiMinus} from "react-icons/hi";
+import { TbRefresh } from "react-icons/tb"
 import styles from "./Styles.module.scss";
 import { auth } from 'components/Firebase';
 import "./Style.css"
+import { handleFirebaseError } from 'components/Handle';
 
 const Cart = () => {
-  const data = useContext(DataContext);
+  const {product, cartList, setCartList, setSnackbar} = useContext(DataContext);
   const navigate = useNavigate();
   const [shipping, setShipping] = useState("0.00");
 
@@ -24,10 +26,10 @@ const Cart = () => {
   };
   
   const deleteFromCart = (event) => {
-    let array = data[6];
+    let array = cartList;
     const productIndex = array.indexOf(event.currentTarget.id);
     array.splice(productIndex, 1);
-    data[7](prevState => [...array]);
+    setCartList(prevState => [...array]);
   }
 
   const formatToCurrency = (amount) => {
@@ -36,8 +38,8 @@ const Cart = () => {
   }
 
   const changeAmount = (amount, id) => {
-    if (data[6].some((cartItem) => (cartItem.product === id) && ((cartItem.amount + amount) >= 1))) {
-      data[7]((cart) =>
+    if (cartList.some((cartItem) => (cartItem.product === id) && ((cartItem.amount + amount) >= 1))) {
+      setCartList((cart) =>
         cart.map((cartItem) =>
           cartItem.product === id
             ? {
@@ -52,20 +54,24 @@ const Cart = () => {
 
   const subTotal = (status) => {
     let total = 0;
-    data[6].forEach(item => {
-      total += Number(parseFloat(data[0][item.product].price) * item.amount);
+    cartList.forEach(item => {
+      total += Number(parseFloat(product[item.product].price) * item.amount);
     })
     return status === "formatted" ? formatToCurrency(total) : total
   }
 
   const checkOut = (event) => {
-    console.log(event)
+    setCartList([]);
+    setSnackbar({
+      ...handleFirebaseError("okcheckout"),
+      open: true,
+    })
   } 
 
   return (
     <>
       {
-        data[6].length === 0 ?
+        cartList.length === 0 ?
         <div className={styles.emptyCart}>
           <p>Your cart is empty!</p>
         </div>
@@ -79,28 +85,28 @@ const Cart = () => {
           <div className={styles.breadcrumb}>
             <div role="presentation" onClick={handleClick}>
               <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNext fontSize="small" />} sx={{p: "14px 10px"}}>
-                <Link 
+                <BCLink 
                   className={styles.brdHov}
                   underline="none" 
                   color="inherit" 
                   href="/"
                   fontSize={"14px"} >
                   Home
-                </Link>
-                <Link
+                </BCLink>
+                <BCLink
                   underline="none"
                   color="text.primary"
                   href="/wishlist"
                   aria-current="page"
                   fontSize={"14px"} >
                   Shopping Cart
-                </Link>
+                </BCLink>
               </Breadcrumbs>
             </div>
           </div>
         </Container>
         <hr style={{margin: "0 0 40px", border: "none", borderBottom: "1px solid #ebebeb"}} />
-        <Container>
+        <Container sx={{pb: "50px"}}>
           <Grid container spacing={2}>
             <Grid item lg={8}>
               <table className={styles.table}>
@@ -115,35 +121,35 @@ const Cart = () => {
                 </thead>
                 <tbody>
                   {
-                    data[6].map(item => 
+                    cartList.map(item => 
                       <tr key={item.product}>
                         <td>
                           <div className={styles.product}>
                             <div className={styles.imgDiv}>
-                              <img src={data[0][item.product].urls[0]} alt="product_photo" className={styles.imgCard} />
+                              <img src={product[item.product].urls[0]} alt="product_photo" className={styles.imgCard} />
                             </div>
-                            <h3>{data[0][item.product].title}</h3>
+                            <h3>{product[item.product].title}</h3>
                           </div>
                         </td>
                         <td>
-                          <h4 className={styles.price}>${data[0][item.product].price}</h4>
+                          <h4 className={styles.price}>${product[item.product].price}</h4>
                         </td>
                         <td className={styles.quantity}>
                           <div>
-                            <button onClick={(event) => changeAmount(event, -1, item.product)}>
+                            <button onClick={(event) => changeAmount(-1, item.product)}>
                               <HiMinus />
                             </button>
                             <input type={"number"} min={1} value={item.amount} readOnly/>
-                            <button onClick={(event) => changeAmount(event, +1, item.product)}>
+                            <button onClick={(event) => changeAmount(+1, item.product)}>
                               <HiPlus />
                             </button>  
                           </div>
                         </td>
                         <td className={styles.totalPrice} >
-                          ${formatToCurrency(data[0][item.product].price * item.amount)}
+                          ${formatToCurrency(product[item.product].price * item.amount)}
                         </td>
                         <td>
-                          <div className={styles.deleteBtn} onClick={deleteFromCart} id={data[0][item.product].id}>
+                          <div className={styles.deleteBtn} onClick={deleteFromCart} id={product[item.product].id}>
                             <Close  />
                           </div>
                         </td>
@@ -182,27 +188,34 @@ const Cart = () => {
                       } />
                   </RadioGroup>
                 </FormControl>
-                <div>
-                  <div className={styles.end}>
-                    <p>
-                      Total
-                      <span>${formatToCurrency((subTotal() + Number(shipping)).toFixed(2))}</span>
-                    </p>
-                    <button className={`${styles.checkOutBtn} ${auth.currentUser.isAnonymous && styles.notActive}`} disabled={auth.currentUser.isAnonymous} onClick={checkOut} >
-                      {
-                        auth.currentUser.isAnonymous ?
-                        "You should sign in first":
-                        "Checkout"
-                      }
-                    </button>
-                  </div>
+                <div className={styles.end}>
+                  <p>
+                    Total
+                    <span>${formatToCurrency((subTotal() + Number(shipping)).toFixed(2))}</span>
+                  </p>
+                  <button className={`${styles.checkOutBtn} ${auth.currentUser.isAnonymous && styles.notActive}`} disabled={auth.currentUser.isAnonymous} onClick={checkOut} >
+                    {
+                      auth.currentUser.isAnonymous ?
+                      "You should sign in first":
+                      "Checkout"
+                    }
+                  </button>
                 </div>
               </div>
+              <Link to='/' className={styles.continueBtn}>CONTINUE SHOPPING <TbRefresh /></Link>
             </Grid>
           </Grid>
         </Container>
         </>
       }
+      <hr style={{
+        display: "block",
+        height: "1px",
+        border: "0",
+        borderTop: "1px solid #ccc",
+        margin: "0",
+        padding: "0",
+      }} />
     </>
   );
 }

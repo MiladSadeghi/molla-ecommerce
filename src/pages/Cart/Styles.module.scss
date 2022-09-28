@@ -259,3 +259,21 @@
   color: #fff !important;
   cursor: not-allowed !important;
 }
+
+.continueBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8.5px 15px;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid #ebebeb;
+  color: #333;
+  margin: 30px 0;
+  text-decoration: none;
+
+  svg {
+    margin-left: 10px;
+  }
+}
