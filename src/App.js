@@ -1,17 +1,18 @@
 import { CssBaseline } from '@mui/material';
 import { lazy, Suspense, useRef, forwardRef } from "react";
-import Loading from "./components/Loading";
+import Loading from "components/Loading";
 import { useState, createContext, useEffect } from 'react';
-import { AddToCartList, AddToWishList, AnonymouslySignIn, db, GetUserCart, GetUserWishList } from './components/Firebase';
+import { AddToCartList, AddToWishList, AnonymouslySignIn, db, GetUserCart, GetUserWishList } from 'components/Firebase';
 import { onValue, ref } from 'firebase/database';
-import Footer from "./components/Footer/Footer";
-import { auth } from './components/Firebase';
-import { Route, Routes } from 'react-router-dom';
+import Footer from "components/Footer/Footer";
+import { auth } from 'components/Firebase';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import WishList from 'pages/Wishlist/Wishlist';
 import { onAuthStateChanged } from 'firebase/auth';
 import MuiAlert from '@mui/material/Alert';
 import { Snackbar, Fade } from '@mui/material';
-import Cart from './pages/Cart/Cart';
+import Cart from 'pages/Cart/Cart';
+import Product from 'pages/Product/Product';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
@@ -101,6 +102,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/wishlist' element={<WishList />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/product/:productID' element={<Product />} />
+          <Route path='/product' element={<Navigate to={"/"} />} />
         </Routes>
         <Footer />
         <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={handleClose} TransitionComponent={Fade}>

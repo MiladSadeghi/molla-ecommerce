@@ -1,0 +1,247 @@
+.brdHov {
+  transition: color ease-in-out 0.2s;
+  &:hover {
+    color: #c96;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .images {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+    transition: all 0.3s ease-in-out;
+
+    img {
+      width: 106.8px;
+      height: 106.8px;
+      object-fit: contain;
+      margin-bottom: 10px;
+      padding: 10px;
+      transition: all 0.35s ease-in-out;
+      border: 1px solid transparent;
+    }
+
+    .activeImage {
+      transition: all 0.35s ease;
+      border-color: #c96;
+    }
+
+    .notActive {
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .mainImage {
+    width: 100%;
+    height: 350.391px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.right {
+  h1 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    line-height: 30px;
+    margin-bottom: 12px;
+  }
+
+  .rate {
+    display: flex;
+    align-items: center;
+    margin-bottom: 13px;
+    p {
+      margin-left: 6px;
+      font-size: 13px;
+      color: #ccc;
+      font-weight: 300;
+      transition: color ease 0.35s;
+
+      &:hover {
+        color: #bf8040;
+      }
+    }
+  }
+
+  .price {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 13px;
+    color: #c96;
+  }
+
+  .description {
+    font-size: 14px;
+    font-weight: 300;
+    color: #777;
+    line-height: 26px;
+    margin-bottom: 20px;
+  }
+}
+
+.quantity {
+  width: 131px;
+
+  div {
+    width: 100%;
+    display: flex;
+    border: 1px solid #dadada;
+
+    input {
+      width: 100%;
+      outline: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8.5px;
+      color: #777;
+      font-weight: 300;
+
+      &[type="number"]::-webkit-inner-spin-button,
+      &input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: none;
+      background: none;
+      padding: 12.5px 8px;
+      color: #9c9c9c;
+      transition: color ease-in-out 0.3s;
+      cursor: pointer;
+
+      svg {
+        font-size: 11px;
+      }
+
+      &:hover {
+        color: #c96;
+      }
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  margin: 20px 0 30px;
+}
+
+.addToCardBtn {
+  width: 202px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.813rem;
+  padding: 6px 15px;
+  background: transparent;
+  border: 1px solid #cc9966;
+  color: #d0a171;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background: #d0a171;
+  }
+
+  svg {
+    font-size: 16px;
+    margin-right: 1.125rem;
+  }
+}
+
+.addToWishlist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  background: transparent;
+  margin-left: 34px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+
+  &:hover {
+    p {
+      color: #bf8040;
+      box-shadow: 0 1px 0 0 #c96;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    color: #666666;
+    transition: all ease 0.3s;
+  }
+
+  svg {
+    font-size: 1.2rem;
+    margin-right: 11px;
+    color: #c96;
+  }
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+
+  .socialsIcon {
+    display: flex;
+    div {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e1e2e6;
+      transition: all ease-in-out 0.3s;
+      margin-left: 1rem;
+      color: #777;
+
+      &:hover {
+        color: #c96;
+        border-color: #c96;
+      }
+    }
+  }
+}
+
+.end {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 0;
+  border-top: 0.1rem solid #ebebeb;
+  p {
+    color: #666;
+    font-size: 14px;
+    font-weight: 300;
+  }
+}
