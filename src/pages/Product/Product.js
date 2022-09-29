@@ -11,10 +11,16 @@ const Product = () => {
   const urlParams = useParams();
   const productID = urlParams.productID;
   const navigate = useNavigate();
-  const {product, cartList, setCartList} = useContext(DataContext);
+  const {product, cartList, setCartList, wishList, setWishList} = useContext(DataContext);
   const [imageIndex, setImageIndex] = useState(0);
-  const productImages = useRef([]);
+  const [revImgArr, setRevImgArr] = useState([]);
   const [amount, setAmount] = useState(1);
+
+  useEffect(() => {
+    return () => {
+      setRevImgArr(product[productID].urls)
+    }
+  }, [])
 
   useEffect(() => {
     if (product.length !== 0 && !product[productID]) {
@@ -22,7 +28,7 @@ const Product = () => {
     } 
 
     if (product.length !== 0) {
-      productImages.current = product[productID].urls.reverse();
+      setRevImgArr(product[productID].urls.reverse());
     }
 
   }, [product, productID, navigate])
@@ -55,7 +61,7 @@ const Product = () => {
           cartItem.product === productID
             ? {
                 ...cartItem,
-                amount: cartItem.amount + 1
+                amount: cartItem.amount + amount
               }
             : cartItem
         )
@@ -64,8 +70,15 @@ const Product = () => {
     }
     setCartList((cart) => [
       ...cart,
-      {product: productID, amount: 1 }
+      {product: productID, amount: amount }
     ]);
+  }
+
+  const addToWishlist = async (event) => {
+    const productID = event.currentTarget.id;
+    if (!wishList.includes(productID)) {
+      setWishList(prevState => [...prevState, productID]);
+    }
   }
 
   return (
@@ -97,11 +110,11 @@ const Product = () => {
             <Grid item md={6} className={styles.left}>
               <div className={styles.images}>
                 {
-                  productImages.current.map((item, index) => <img onClick={changeMainImage} imgindex={index} className={index === imageIndex ? styles.activeImage : styles.notActive} src={item} key={index} alt={"images"} />)
+                  revImgArr.map((item, index) => <img onClick={changeMainImage} imgindex={index} className={index === imageIndex ? styles.activeImage : styles.notActive} src={item} key={index} alt={"images"} />)
                 }
               </div>
               <div className={styles.mainImage}>
-                <img src={productImages.current[imageIndex]} alt="mainImage" />
+                <img src={revImgArr[imageIndex]} alt="mainImage" />
               </div>
             </Grid>
             <Grid item md={6}>
@@ -129,7 +142,7 @@ const Product = () => {
                     <AddShoppingCart />
                     ADD TO CART
                   </button>
-                  <button className={styles.addToWishlist}>
+                  <button className={styles.addToWishlist} onClick={addToWishlist} id={product[productID].id}>
                     <FavoriteBorder />
                     <p>Add to Wishlist</p>
                   </button>
