@@ -15,10 +15,16 @@ const Product = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const [revImgArr, setRevImgArr] = useState([]);
   const [amount, setAmount] = useState(1);
+  const [bgPosition, setBgPosition] = useState("50% 50%");
 
   useEffect(() => {
+    if (product.length !== 0) {
+      setRevImgArr(product[productID].urls.reverse());
+    }
     return () => {
-      setRevImgArr(product[productID].urls)
+      if(product[productID]) {
+        setRevImgArr(product[productID].urls)
+      }
     }
   }, [])
 
@@ -81,6 +87,13 @@ const Product = () => {
     }
   }
 
+  function zoom(e){
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = (e.clientX - left) / (width) * 100
+    const y = (e.clientY - top) / (height) * 100
+    setBgPosition(`${x}% ${y}%`)
+  }
+
   return (
     <div>
       {
@@ -113,7 +126,7 @@ const Product = () => {
                   revImgArr.map((item, index) => <img onClick={changeMainImage} imgindex={index} className={index === imageIndex ? styles.activeImage : styles.notActive} src={item} key={index} alt={"images"} />)
                 }
               </div>
-              <div className={styles.mainImage}>
+              <div className={styles.mainImage} onMouseMove={zoom}  style={{backgroundImage: `url(${revImgArr[imageIndex]})`, backgroundPosition: bgPosition}}>
                 <img src={revImgArr[imageIndex]} alt="mainImage" />
               </div>
             </Grid>
