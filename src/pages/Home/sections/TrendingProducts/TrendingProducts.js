@@ -69,11 +69,9 @@ const TrendingProducts = () => {
         </div>
       </div>
       <div className={styles.body1}>
-        <Grid container spacing={2}>
-          <Grid item lg={3}>
+          <div style={{marginRight: "22px"}} className={styles.bannerImgDiv}>
             <img src="https://firebasestorage.googleapis.com/v0/b/shop-8b88e.appspot.com/o/05bdbb14-93d8-451a-a62e-b1e02f393c04.jpg?alt=media&token=74ad94bb-d142-4a69-9e57-b82092f2069c" alt="" className={styles.bannerImg} />
-          </Grid>
-          <Grid item lg={9}>
+          </div>
             <Swiper
               navigation={true}
               modules={[Navigation]}
@@ -100,12 +98,10 @@ const TrendingProducts = () => {
               {
                 Object.keys(product).length > 0 && 
                 Object.values(productDivider)[value].map(item=> 
-                  <SwiperSlide key={v4()}><ProductCard sty={{height: "100%"}} data={item}/></SwiperSlide>
+                  <SwiperSlide key={v4()}><ProductCard sty={{}} data={item}/></SwiperSlide>
                 )
               }
             </Swiper>
-          </Grid>
-        </Grid>
       </div>
       <hr />
     </Container>

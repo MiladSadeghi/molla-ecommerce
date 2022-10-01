@@ -8,7 +8,7 @@ const FreeShipping = () => {
     <Container sx={{my: "2rem"}}>
       <CssBaseline />
       <div className={styles.bgImage}>
-        <Box sx={{py: "1.9rem", background: "#fff", display: "flex", alignItems: "center", justifyContent:  "center"}}>
+        <Box className={styles.father}>
           <Box component="div" className={styles.leftBox}>
             <h5>New Deals<br /><span>Start Daily at 12pm e.t.</span></h5>
           </Box>

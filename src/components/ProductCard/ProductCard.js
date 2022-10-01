@@ -41,7 +41,7 @@ const ProductCard = (props) => {
   }
 
   return (
-    <Card style={{...props.sty ,boxShadow: "none"}} sx={{ height: "100%" }} className={`${styles.card} card`}>
+    <Card style={{boxShadow: "none", width: "100%", ...props.sty}} sx={{ height: "100%" }} className={`${styles.card} card`}>
       <Box component="div" sx={{display: "flex", alignItems: "center", justifyContent: "center", position: "relative"}} className={styles.imageDiv}>
         <CardMedia
           component="img"

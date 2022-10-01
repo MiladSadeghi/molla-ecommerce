@@ -48,8 +48,6 @@
   }
 
   td {
-    padding: 30px 0;
-    border-bottom: 0.1rem solid #ebebeb;
     align-items: center;
 
     .product {
@@ -275,5 +273,55 @@
 
   svg {
     margin-left: 10px;
+  }
+}
+
+tr {
+  position: relative;
+  border-bottom: 0.1rem solid #ebebeb;
+}
+
+@media screen and (max-width: 920px) {
+  thead {
+    display: none;
+  }
+  .deleteBtn {
+    position: absolute;
+    right: 1.5rem;
+    top: 0.5rem;
+    padding: 0.5rem !important;
+    width: auto !important;
+  }
+  .table {
+    tbody {
+      tr {
+        .product {
+          justify-content: center;
+          h3 {
+            width: 60%;
+            white-space: break-spaces;
+          }
+        }
+      }
+    }
+    tr {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e3e3e3;
+      padding: 42px 0 40px;
+    }
+    td {
+      .price {
+        margin: 5px 0;
+      }
+    }
+  }
+
+  .quantity {
+    margin-bottom: 5px;
+    div {
+      width: 100%;
+    }
   }
 }

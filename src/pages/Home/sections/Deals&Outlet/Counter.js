@@ -3,7 +3,7 @@ import { memo } from 'react';
 import styles from "./Styles.module.scss";
 
 const Counter = () => {
-  const countDownDate = new Date("Jan 5, 2024 0:0:0").getTime();
+  const countDownDate = new Date("Jan 5, 2124 0:0:0").getTime();
   const [countDown, setCountDown] = useState({
     hour: 0,
     minute: 0,

@@ -17,40 +17,41 @@ const DealsOutlet = () => {
           <p>Today’s deal and more</p>
         </div>
         <div className={styles.body}>
-        <Grid container columnSpacing={2}>
-          <Grid item lg={6} className={styles.ghPic}>
-            <div className={styles.body1}>
-              <h2>Deal of the Day.</h2>
-              <h4>Limited quantities.</h4>
+          <div className={styles.father}>
+            <div  className={styles.ghPic}>
+              <div className={styles.body1}>
+                <h2>Deal of the Day.</h2>
+                <h4>Limited quantities.</h4>
+              </div>
+              <div className={styles.body2}>
+                <p className={styles.title}>Home Smart Speaker with  Google Assistant</p>
+                <p>$129.00 <span>Was $150.99</span></p>
+                <button>
+                  Shop Now 
+                  <ArrowRightAlt sx={{ml: ".7rem", fontSize: 22, verticalAlign: "middle"}} /> 
+                </button>
+              </div>
+              <Counter />
             </div>
-            <div className={styles.body2}>
-              <p className={styles.title}>Home Smart Speaker with  Google Assistant</p>
-              <p>$129.00 <span>Was $150.99</span></p>
-              <button>
-                Shop Now 
-                <ArrowRightAlt sx={{ml: ".7rem", fontSize: 22, verticalAlign: "middle"}} /> 
-              </button>
+            <div className={styles.rightProducts}>
+              <div className={styles.rightProduct}>
+                {
+                  Object.keys(product).length > 0 && 
+                  <ProductCard data={product["15080249"]} sty={{height: "100%"}} >
+                    <span>Was $3,599.99</span>
+                  </ProductCard>
+                }
+              </div>
+              <div className={styles.rightProduct}>
+                {
+                  Object.keys(product).length > 0 && 
+                  <ProductCard data={product["48411537"]} sty={{height: "100%"}}>
+                    <span>Was $200.99</span>
+                  </ProductCard>
+                }
+              </div>
             </div>
-            <Counter />
-          </Grid>
-          <Grid item lg={3}>
-          {
-            Object.keys(product).length > 0 && 
-            <ProductCard data={product["15080249"]}>
-              <span>Was $3,599.99</span>
-            </ProductCard>
-          }
-          </Grid>
-          <Grid item lg={3}>
-          {
-            Object.keys(product).length > 0 && 
-            <ProductCard data={product["48411537"]}>
-              <span>Was $200.99</span>
-            </ProductCard>
-          }
-          
-          </Grid>
-        </Grid>
+          </div>
         </div>
       </Container>
     </div>

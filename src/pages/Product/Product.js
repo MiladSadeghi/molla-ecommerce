@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useEffect, useContext, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useContext, useState, useCallback } from 'react';
 import { DataContext } from "App";
 import styles from "./Styles.module.scss";
 import { Breadcrumbs, Container, Grid, Link as BCLink, Rating } from '@mui/material';
@@ -47,7 +47,7 @@ const Product = () => {
   const changeMainImage = useCallback((event) => {
     const selectedImgIndex = Number(event.currentTarget.getAttribute("imgindex"));
     setImageIndex(selectedImgIndex);
-  }, [imageIndex])
+  }, [])
 
   function randomNumber() {
     return Math.floor(Math.random() * (5 - 1 + 1) + 1)
@@ -87,10 +87,10 @@ const Product = () => {
     }
   }
 
-  function zoom(e){
+  const zoom = (e) =>{
     const { left, top, width, height } = e.target.getBoundingClientRect();
-    const x = (e.clientX - left) / (width) * 100
-    const y = (e.clientY - top) / (height) * 100
+    const x = (e.clientX - left) / (width) * 100;
+    const y = (e.clientY - top) / (height) * 100;
     setBgPosition(`${x}% ${y}%`)
   }
 
@@ -119,14 +119,14 @@ const Product = () => {
               </BCLink>
             </Breadcrumbs>
           </div>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} sx={{justifyContent: "center"}}>
             <Grid item md={6} className={styles.left}>
               <div className={styles.images}>
                 {
                   revImgArr.map((item, index) => <img onClick={changeMainImage} imgindex={index} className={index === imageIndex ? styles.activeImage : styles.notActive} src={item} key={index} alt={"images"} />)
                 }
               </div>
-              <div className={styles.mainImage} onMouseMove={zoom}  style={{backgroundImage: `url(${revImgArr[imageIndex]})`, backgroundPosition: bgPosition}}>
+              <div className={styles.mainImage} onMouseMove={zoom} style={{backgroundImage: `url(${revImgArr[imageIndex]})`, backgroundPosition: bgPosition}}>
                 <img src={revImgArr[imageIndex]} alt="mainImage" />
               </div>
             </Grid>

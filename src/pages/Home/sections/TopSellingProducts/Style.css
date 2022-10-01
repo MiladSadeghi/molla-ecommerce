@@ -5,3 +5,18 @@
   color: #fcb941;
   padding: 0 16px;
 }
+
+.MuiTabs-flexContainer {
+  display: block;
+}
+
+.css-jpln7h-MuiTabs-scroller {
+  display: block;
+  width: auto;
+  overflow: auto !important;
+}
+
+.css-jpln7h-MuiTabs-scroller::-webkit-scrollbar {
+  overflow: hidden;
+  display: none;
+}

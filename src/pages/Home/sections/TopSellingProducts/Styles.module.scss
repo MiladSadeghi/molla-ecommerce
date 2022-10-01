@@ -44,3 +44,13 @@
     padding: 0 16px;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .top {
+    flex-direction: column;
+
+    .body {
+      width: 100%;
+    }
+  }
+}

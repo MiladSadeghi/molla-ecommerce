@@ -42,7 +42,7 @@ const Trait = () => {
         <div>
           <div >
             <Grid container spacing={2} className={styles.bgBG} >
-              <div className={styles.girdContent}>
+              <div className={styles.gridContent}>
                 <Grid item lg={6} className={styles.grid}>
                   <h1>Shop Social</h1>
                   <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.</p>
@@ -54,7 +54,7 @@ const Trait = () => {
                     <div><FaPinterest /></div>
                   </div>
                 </Grid>
-                <Grid item lg={6} className={styles.grid}>
+                <Grid item lg={6} className={`${styles.grid} ${styles.withBefore}`}>
                   <h4>Get the Latest Deals <br />
                     <p>and <br /> receive <span>$20 coupon</span> for first shopping</p>
                   </h4>

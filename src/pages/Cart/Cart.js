@@ -27,7 +27,7 @@ const Cart = () => {
   
   const deleteFromCart = (event) => {
     let array = cartList;
-    const productIndex = array.indexOf(event.currentTarget.id);
+    const productIndex = array.findIndex(item => item.product === event.currentTarget.id)
     array.splice(productIndex, 1);
     setCartList(prevState => [...array]);
   }
@@ -108,7 +108,7 @@ const Cart = () => {
         <hr style={{margin: "0 0 40px", border: "none", borderBottom: "1px solid #ebebeb"}} />
         <Container sx={{pb: "50px"}}>
           <Grid container spacing={2}>
-            <Grid item lg={8}>
+            <Grid item lg={8} xs={12}>
               <table className={styles.table}>
                 <thead>
                   <tr>
@@ -159,7 +159,7 @@ const Cart = () => {
                 </tbody>
               </table>
             </Grid>
-            <Grid item lg={4}>
+            <Grid item lg={4} xs={12}>
               <div className={styles.checkOutProcess}>
                 <div className={styles.cartDetail}>
                   <h5>Cart Total</h5>

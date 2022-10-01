@@ -119,6 +119,7 @@ const Wishlist = () => {
                 }
               </tbody>
             </table>
+          </div>
             <div className={styles.socials}>
               <p>Share on:</p>
               <div className={styles.socialsIcon}>
@@ -129,7 +130,6 @@ const Wishlist = () => {
                 <div><FaPinterest /></div>
               </div>
             </div>
-          </div>
         </Container>
       </>
     }

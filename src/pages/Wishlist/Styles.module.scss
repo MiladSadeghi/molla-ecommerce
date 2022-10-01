@@ -47,7 +47,7 @@
     text-align: inherit;
   }
 
-  td {
+  tbody tr {
     padding: 30px 0;
     border-bottom: 0.1rem solid #ebebeb;
     align-items: center;
@@ -186,5 +186,54 @@
   p {
     font-size: 2rem;
     padding: 7rem 0;
+  }
+}
+
+tr {
+  position: relative;
+}
+
+@media screen and (max-width: 900px) {
+  thead {
+    display: none;
+  }
+  .table {
+    tr {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e3e3e3;
+      padding: 42px 0 40px;
+    }
+
+    tbody {
+      tr {
+        .product {
+          justify-content: center;
+          h3 {
+            width: 60%;
+            white-space: break-spaces;
+          }
+        }
+      }
+    }
+  }
+  td {
+    text-align: center;
+  }
+  tbody tr {
+    .price {
+      margin: 1px 0;
+    }
+  }
+  .addToCardBtn {
+    margin-top: 15px;
+  }
+  .deleteBtn {
+    position: absolute;
+    right: 1.5rem;
+    top: 0.5rem;
+    padding: 0.5rem !important;
+    width: auto !important;
   }
 }

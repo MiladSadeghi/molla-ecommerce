@@ -8,7 +8,7 @@ import HeaderBanner from './HeaderBanner';
 
 const Header = () => {
   return (
-    <Container fixed sx={{my: "2rem"}}>
+    <Container sx={{my: "2rem"}}>
       <Grid container columnSpacing={3} >
         <Grid item lg={8} width={"100%"}>
           <HeaderBanner />

@@ -30,6 +30,7 @@
     background-repeat: no-repeat;
     min-height: 420px;
     padding: 2.25rem;
+    width: 100%;
   }
 }
 
@@ -129,5 +130,40 @@
     p {
       font-size: 0.625rem;
     }
+  }
+}
+
+.rightProducts {
+  display: flex;
+}
+
+.rightProduct {
+  margin-left: 8px;
+  width: 100%;
+}
+
+.father {
+  display: flex;
+  width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .father {
+    flex-direction: column;
+  }
+
+  .rightProducts {
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .rightProduct {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .rightProducts {
+    flex-direction: column;
   }
 }

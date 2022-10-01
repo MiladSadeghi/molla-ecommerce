@@ -1,7 +1,6 @@
 .icons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   margin: 20px 0;
   padding: 28px 0;
 
@@ -29,7 +28,7 @@
   padding: 1rem;
 }
 
-.girdContent {
+.gridContent {
   background: #fff;
   display: flex;
 
@@ -40,6 +39,8 @@
     flex-direction: column;
     padding: 3.5rem 2rem;
     text-align: center;
+    position: relative;
+
     h1 {
       font-size: 1.875rem;
       font-weight: 400;
@@ -66,6 +67,8 @@
 
     .socialIcons {
       display: flex;
+      align-items: center;
+      justify-content: center;
       div {
         width: 46px;
         height: 46px;
@@ -76,7 +79,10 @@
         justify-content: center;
         border: 1px solid transparent;
         transition: all ease-in-out 0.3s;
-        margin-left: 1rem;
+        margin-right: 1rem;
+        &:nth-child(5) {
+          margin-right: 0;
+        }
         &:hover {
           border-color: #e1e2e6;
         }
@@ -161,5 +167,46 @@
         font-size: 1.7rem;
       }
     }
+  }
+}
+
+.withBefore::before {
+  content: "";
+  width: 1px;
+  display: block;
+  height: 80%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  background-color: #ebebeb;
+}
+
+@media screen and (max-width: 992px) {
+  .icons {
+    grid-template-columns: repeat(2, 1fr);
+
+    .icon {
+      padding: 20px 0;
+    }
+  }
+  .gridContent {
+    flex-direction: column;
+    width: 100%;
+
+    .withBefore::before {
+      top: 0;
+      height: 1px;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .icons {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

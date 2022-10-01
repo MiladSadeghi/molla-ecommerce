@@ -6,6 +6,10 @@ $gray: #777;
 .swiper {
   width: 100%;
   height: 100%;
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
 }
 
 .swiper-slide {
@@ -35,19 +39,21 @@ $gray: #777;
 .headerSliderText {
   position: absolute;
   top: 50%;
-  left: 100px;
+  left: 20px;
   transform: translateY(-50%);
   content: "";
+  text-align: initial;
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 14px;
     color: $yellow;
     font-weight: 300;
+    line-height: 1.1;
   }
   h1 {
+    line-height: 1.2;
     color: $header-color;
-    font-size: 3.125rem;
-    line-height: 57px;
+    font-size: 30px;
   }
   p {
     margin-bottom: 0.4rem;
@@ -55,14 +61,14 @@ $gray: #777;
       position: relative;
     }
     .firstSup {
-      font-size: 1.2rem;
+      font-size: 14px;
       vertical-align: top;
-      top: 0.5em;
+      top: 0.3em;
     }
 
     span {
       margin-left: 11px;
-      font-size: 3.125rem;
+      font-size: 30px;
       font-weight: 700;
       color: $yellow;
 
@@ -78,7 +84,6 @@ $gray: #777;
 .bannerButton {
   background: $yellow;
   color: #fff;
-  padding: 0.72rem 2.05rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,6 +91,7 @@ $gray: #777;
   border-radius: 30px;
   font-size: 1rem;
   transition: all ease-in-out 0.3s;
+  padding: 6.5px 10px;
 
   &:hover {
     background-color: #bf913d;
@@ -155,6 +161,80 @@ $gray: #777;
     row-gap: 1rem;
     img {
       width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .photo1 {
+    content: url("https://firebasestorage.googleapis.com/v0/b/shop-8b88e.appspot.com/o/79718a2f-d613-436d-bc72-768d02f56431.jpg?alt=media&token=5c6ce175-a9e6-4d9e-8ba1-c12df413408c");
+  }
+  .photo2 {
+    content: url("https://firebasestorage.googleapis.com/v0/b/shop-8b88e.appspot.com/o/e3472940-5768-4015-aa14-c9f9f4eb23d1.jpg?alt=media&token=9d22e0db-b541-4398-9f96-8e95eeffa332");
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .headerSliderText {
+    left: 50px;
+    h1 {
+      font-size: 32px;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+    .bannerButton {
+      font-size: 13px;
+      padding: 10px 15px;
+    }
+
+    p {
+      .firstSup {
+        font-size: 15px;
+      }
+      span {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .headerSliderText {
+    left: 70px;
+
+    h1 {
+      font-size: 40px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .firstSup {
+      font-size: 18px;
+    }
+
+    p {
+      span {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .headerSliderText {
+    h1 {
+      font-size: 50px;
+    }
+    h3 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .bannerButton {
+      padding: 0.72rem 2.05rem;
     }
   }
 }

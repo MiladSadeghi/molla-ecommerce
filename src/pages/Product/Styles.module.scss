@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 
   .images {
     display: flex;
@@ -254,5 +255,44 @@
     color: #666;
     font-size: 14px;
     font-weight: 300;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .left {
+    flex-direction: column-reverse !important;
+    .images {
+      flex-direction: row;
+      img {
+        width: calc(100% / 3);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 498px) {
+  .right {
+    h1 {
+      font-size: 1rem;
+    }
+  }
+
+  .buttons {
+    .addToCardBtn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .addToWishlist {
+      margin-left: 0;
+    }
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .end {
+    flex-direction: column;
+    p {
+      margin-bottom: 5px;
+    }
   }
 }

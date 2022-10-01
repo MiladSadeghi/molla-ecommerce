@@ -53,3 +53,35 @@ $light-black: #777;
   border-radius: 50px;
   letter-spacing: -0.14px;
 }
+
+.father {
+  padding: 1.9rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 992px) {
+  .leftBox {
+    width: 100%;
+    margin-bottom: 20px;
+
+    h5 {
+      text-align: center;
+    }
+  }
+
+  .father {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rod {
+    display: none;
+  }
+
+  .rightBox {
+    margin-bottom: 20px;
+  }
+}

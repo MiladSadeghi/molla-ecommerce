@@ -90,3 +90,9 @@
     font-weight: 300;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .bottom {
+    flex-direction: column;
+  }
+}

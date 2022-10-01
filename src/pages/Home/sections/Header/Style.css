@@ -23,3 +23,9 @@
     height: 100%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .swiperC .swiper-button-prev, .swiperC .swiper-button-next {
+    display: none;
+  }
+}
