@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { DataContext } from 'App';
-import { Breadcrumbs, Container, Link } from '@mui/material';
+import { Breadcrumbs, Container, Link as BCLink } from '@mui/material';
 import styles from "./Styles.module.scss";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { NavigateNext, AddShoppingCart, Close } from '@mui/icons-material';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaPinterest } from "react-icons/fa";
 const Wishlist = () => {
@@ -59,22 +59,22 @@ const Wishlist = () => {
           <div className={styles.breadcrumb}>
             <div role="presentation" onClick={handleClick}>
               <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNext fontSize="small" />} sx={{p: "14px 10px", mb: "40px"}}>
-                <Link 
+                <BCLink 
                   className={styles.brdHov}
                   underline="none" 
                   color="inherit" 
                   href="/"
                   fontSize={"14px"} >
                   Home
-                </Link>
-                <Link
+                </BCLink>
+                <BCLink
                   underline="none"
                   color="text.primary"
                   href="/wishlist"
                   aria-current="page"
                   fontSize={"14px"} >
                   Wishlist
-                </Link>
+                </BCLink>
               </Breadcrumbs>
             </div>
           </div>
@@ -97,7 +97,7 @@ const Wishlist = () => {
                           <div className={styles.imgDiv}>
                             <img src={product[item].urls[0]} alt="product_photo" className={styles.imgCard} />
                           </div>
-                          <h3>{product[item].title}</h3>
+                          <Link to={`/product/${item}`}>{product[item].title}</Link>
                         </div>
                       </td>
                       <td>

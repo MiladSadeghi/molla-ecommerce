@@ -56,7 +56,9 @@
       display: flex;
       align-items: center;
 
-      h3 {
+      a {
+        text-decoration: none;
+        color: #333;
         display: inline-block;
         font-size: 1rem;
         width: 300px;
@@ -210,7 +212,7 @@ tr {
       tr {
         .product {
           justify-content: center;
-          h3 {
+          a {
             width: 60%;
             white-space: break-spaces;
           }

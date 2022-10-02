@@ -128,7 +128,7 @@ const Cart = () => {
                             <div className={styles.imgDiv}>
                               <img src={product[item.product].urls[0]} alt="product_photo" className={styles.imgCard} />
                             </div>
-                            <h3>{product[item.product].title}</h3>
+                            <Link to={`/product/${item.product}`}>{product[item.product].title}</Link>
                           </div>
                         </td>
                         <td>

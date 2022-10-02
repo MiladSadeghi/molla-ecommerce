@@ -6,6 +6,7 @@ import styles from "./Styles.module.scss";
 import { DataContext } from "App";
 import ProductCard from 'components/ProductCard/ProductCard';
 import Counter from './Counter';
+import { Link } from 'react-router-dom';
 const DealsOutlet = () => {
   const {product} = useContext(DataContext);
   
@@ -26,10 +27,10 @@ const DealsOutlet = () => {
               <div className={styles.body2}>
                 <p className={styles.title}>Home Smart Speaker with  Google Assistant</p>
                 <p>$129.00 <span>Was $150.99</span></p>
-                <button>
+                <Link to={`product/78040670`}>
                   Shop Now 
                   <ArrowRightAlt sx={{ml: ".7rem", fontSize: 22, verticalAlign: "middle"}} /> 
-                </button>
+                </Link>
               </div>
               <Counter />
             </div>

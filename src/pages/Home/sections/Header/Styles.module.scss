@@ -92,6 +92,8 @@ $gray: #777;
   font-size: 1rem;
   transition: all ease-in-out 0.3s;
   padding: 6.5px 10px;
+  text-decoration: none;
+  width: fit-content;
 
   &:hover {
     background-color: #bf913d;
@@ -136,7 +138,7 @@ $gray: #777;
     margin-bottom: 0.4rem;
   }
 
-  button {
+  a {
     display: flex;
     background: transparent;
     color: $yellow;
@@ -147,6 +149,8 @@ $gray: #777;
     padding: 2px 10px;
     border-radius: 10px;
     margin-left: -0.6rem;
+    width: fit-content;
+    text-decoration: none;
 
     &:hover {
       color: #fff;

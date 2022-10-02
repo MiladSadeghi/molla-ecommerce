@@ -5,6 +5,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { GiBinoculars } from "react-icons/gi";
 import { DataContext } from 'App';
 import styles from "./ProductCard.module.scss";
+import { Link } from 'react-router-dom';
 
 function randomNumber() {
   return Math.floor(Math.random() * (5 - 1 + 1) + 1)
@@ -36,7 +37,7 @@ const ProductCard = (props) => {
     }
     setCartList((cart) => [
       ...cart,
-      {product: productID, amount: 1 } // <-- initial amount 1
+      {product: productID, amount: 1 }
     ]);
   }
 
@@ -62,16 +63,16 @@ const ProductCard = (props) => {
               <h5>add to cart</h5>
             </div>
             <div className={styles.rode}></div>
-            <div>
+            <Link to={`product/${props.data.id}`}>
               <GiBinoculars />
               <h5>quick view</h5>
-            </div>
+            </Link>
           </div>
         </div>
       </Box>
       <CardContent className={styles.cardContent}>
         <p className={styles.category}>{props.data.category}</p>
-        <h5 className={styles.title}>{props.data.title}</h5>
+        <Link to={`product/${props.data.id}`} className={styles.title}>{props.data.title}</Link>
         <p style={(props?.children) && {color: "#EF837B"}} className={styles.price}>${props.data.price} {props?.children && props.children}</p>
         <Rating name="read-only" size='small' value={randomNumber()} readOnly />
       </CardContent>

@@ -54,7 +54,7 @@
       display: flex;
       align-items: center;
 
-      h3 {
+      a {
         display: inline-block;
         font-size: 1rem;
         width: 300px;
@@ -62,6 +62,8 @@
         font-weight: 400;
         text-overflow: ellipsis;
         overflow: hidden;
+        text-decoration: none;
+        color: #333;
       }
     }
 
@@ -297,7 +299,7 @@ tr {
       tr {
         .product {
           justify-content: center;
-          h3 {
+          a {
             width: 60%;
             white-space: break-spaces;
           }

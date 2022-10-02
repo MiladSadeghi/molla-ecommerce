@@ -9,6 +9,7 @@ import ProductCard from 'components/ProductCard/ProductCard';
 import { v4 } from 'uuid';
 import "swiper/css";
 import "./Style.css";
+import { Link } from 'react-router-dom';
 
 const TrendingProducts = () => {
   const [value, setValue] = React.useState(0);
@@ -69,9 +70,9 @@ const TrendingProducts = () => {
         </div>
       </div>
       <div className={styles.body1}>
-          <div style={{marginRight: "22px"}} className={styles.bannerImgDiv}>
+          <Link to={"product/06298355"} style={{marginRight: "22px"}} className={styles.bannerImgDiv}>
             <img src="https://firebasestorage.googleapis.com/v0/b/shop-8b88e.appspot.com/o/05bdbb14-93d8-451a-a62e-b1e02f393c04.jpg?alt=media&token=74ad94bb-d142-4a69-9e57-b82092f2069c" alt="" className={styles.bannerImg} />
-          </div>
+          </Link>
             <Swiper
               navigation={true}
               modules={[Navigation]}
