@@ -82,7 +82,7 @@ const SignInSignUp = () => {
                 onChange={handleChange} 
                 centered
                 variant="fullWidth"
-                sx={{borderBottom: ".1rem solid #cacaca"}}
+                sx={{borderBottom: ".1rem solid #cacaca", display: "flex"}}
                 TabIndicatorProps={{
                   style: {
                     backgroundColor: "#fcb941"

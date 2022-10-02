@@ -35,6 +35,8 @@
   box-shadow: 0px 11px 15px -7px RGB(0 0 0 / 20%),
     0px 24px 38px 3px RGB(0 0 0 / 14%), 0px 9px 46px 8px RGB(0 0 0 / 12%);
   padding: 2rem 4rem;
+  overflow: auto;
+  height: 100%;
 }
 
 .inputs {
@@ -135,5 +137,13 @@
       font-size: 1.4rem;
       margin-right: 0.7rem;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal-signin-signup {
+    width: 80%;
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
 }

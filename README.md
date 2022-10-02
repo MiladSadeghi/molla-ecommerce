@@ -1,70 +1,90 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<p align="center">
+  <a href="" rel="noopener" align="center">
+   <img src="https://s6.uupload.ir/files/logo-footer_jfi6.png"
+   alt="Project logo" align="center" >
+ </a>
+</p>
 
-In the project directory, you can run:
 
-### `npm start`
+<h3 align="center">Molla ecommerce</h3>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<div align="center">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-### `npm test`
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+<p align="center">a react ecommerce with a LOT of ability
+    <br> 
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📝 Table of Contents
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [About](#about)
+- [How Works](#work)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧐 About <a name = "about"></a>
 
-### `npm run eject`
+a full responsive react shopping website with some feature like anonymous login, sign in and sign up,  cart, wishlist and more things. also used firebase for everything i said plus save the files on storage, auth for login and keep the product information on realtime database.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙ How Does It Work? <a name="work"></a>
+When you enter the website, you are anonymously log in to website(thanks to firebase auth for a lot of free features). so if you add anything to cart or wishlist, its will be save on the database, so forgot about lose data. if you want to access this data from other device, you should register or use google sign in(again thanks to firebase auth) and will be automatically transfered to your account and you will be see it on any device!.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+for start you should clone the project(from any way you know!). and install the prerequisites.
 
-## Learn More
+### Installing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+you don't need any additional thing except npm for install.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm i
+```
 
-### Code Splitting
+and for running
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm start
+```
 
-### Analyzing the Bundle Size
+So EZ!.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## 🎈 Usage <a name="usage"></a>
+if you are student and a lazy guy! and need a project for exam. its works for you. it's just practice project to challenging my self.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🚀 Deployment <a name = "deployment"></a>
 
-### Advanced Configuration
+for build you should do like other react project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+npm build
+```
 
-### Deployment
+## ⛏️ Built Using <a name = "built_using"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- [React JS](https://reactjs.org/) - Front-end library
+- [Firebase](https://firebase.google.com/) - Database and Storage
+- [Material UI](https://mui.com/) - CSS framework
 
-### `npm run build` fails to minify
+## ✍️ Authors <a name = "authors"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@MiladSadeghi](https://github.com/MiladSadeghi) - Idea & Initial work
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+- don't tip! just hit like button
+- i used [Molla - eCommerce Template](https://themeforest.net/item/molla-ecommerce-html5-template/25119280) as inspiring for template
