@@ -13,10 +13,12 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 </div>
 
+<div align="center">
+	<a href="https://molla-ecommerce-react.miladsdgh.ir/">Demo</a>
+</div>
 ---
 
 <p align="center">a react ecommerce with a LOT of ability
@@ -79,6 +81,7 @@ npm build
 - [React JS](https://reactjs.org/) - Front-end library
 - [Firebase](https://firebase.google.com/) - Database and Storage
 - [Material UI](https://mui.com/) - CSS framework
+- [Swiper](https://swiperjs.com/) - Image Slider
 
 ## ✍️ Authors <a name = "authors"></a>
 
